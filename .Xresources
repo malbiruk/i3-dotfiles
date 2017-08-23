@@ -1,0 +1,88 @@
+/* Rofi */
+#define r_bg   #030d10
+#define r_fg   #97a4ad
+#define r_hlfg #ffe4ce
+#define r_hlbg #7f99a6
+
+rofi.modi:                           run,ssh,window
+
+! States: bg, fg, bgalt, hlbg, hlfg
+rofi.color-enabled: true
+rofi.color-normal: r_bg,r_fg,r_bg,r_bg,r_hlfg
+rofi.color-urgent: r_bg,#e9f5248,r_bg,r_bg,r_hlbg
+rofi.color-active: r_bg,r_hlbg,r_bg,r_bg,r_hlfg
+!rofi.states: background, border
+rofi.color-window: r_bg,r_hlbg
+
+rofi.separator-style: none
+rofi.bw: 0
+rofi.columns: 1
+rofi.padding: 400
+rofi.eh: 1
+
+rofi.yoffset: 0
+rofi.location: 0
+rofi.width: 100
+rofi.font: Noto Sans 12
+rofi.lines: 5
+rofi.hide-scrollbar: true
+rofi.terminal: urxvt
+
+/*###############
+# URXVT settings
+###############*/
+URxvt.cursorUnderline: true
+URxvt.cursorBlink: true
+
+URxvt.urlLauncher: xdg-open
+
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,
+URxvt.saveLines: 12000
+
+URxvt.font: xft:Hack:regular:pixelsize=12
+URxvt.boldFont: xft:Hack:bold:pixelsize=12
+URxvt.letterSpace: -1
+
+/* # scrollbar - true (default) or false */
+URxvt.scrollBar: false
+
+URxvt.tabbed.tabbar-fg: 4444
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 4
+URxvt.tabbed.tab-bg: 0
+
+urxvt.foreground:   #ffe4ce
+urxvt.background:   #030d10
+
+! black
+urxvt.color0:       #97a4ad
+urxvt.color8:       #030d10
+
+! red
+urxvt.color1:       #9f5248
+urxvt.color9:       #9f5248
+
+! green
+urxvt.color2:       #a1adb9
+urxvt.color10:      #a1adb9
+
+! yellow
+urxvt.color3:       #ffd9a3
+urxvt.color11:      #ffd9a3
+
+! blue
+urxvt.color4:       #5a7e8c
+urxvt.color12:      #5a7e8c
+
+! magenta
+urxvt.color5:       #6a555c
+urxvt.color13:      #6a555c
+
+! cyan
+urxvt.color6:       #7f99a6
+urxvt.color14:      #7f99a6
+
+! white
+urxvt.color7:       #ffe4ce
+urxvt.color15:      #ffffff
