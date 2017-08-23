@@ -102,6 +102,8 @@ assign [class="Zathura"] $6
 assign [class="Gimp"] $8
 assign [class="Pcmanfm"] $9
 
+for_window [class="feh"] floating enable
+
 # default workspace
 exec --no-startup-id i3-msg 'workspace $2'
 
