@@ -19,6 +19,9 @@ set laststatus=1
 set encoding=utf-8
 set nu
 set cursorline
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 hi CursorLine cterm=None ctermbg=None ctermfg=None
 hi CursorColumn cterm=None ctermbg=DarkGray ctermfg=None
