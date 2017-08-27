@@ -61,16 +61,19 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# marks
-bindsym $mod+F1 [con_mark="1"] focus
-bindsym $mod+F2 [con_mark="2"] focus
-bindsym $mod+F3 [con_mark="3"] focus
-bindsym $mod+F4 [con_mark="4"] focus
-bindsym $mod+F5 [con_mark="5"] focus
-bindsym $mod+F6 [con_mark="6"] focus
-bindsym $mod+F7 [con_mark="7"] focus
-bindsym $mod+F8 [con_mark="8"] focus
-bindsym $mod+F9 [con_mark="9"] focus
+# make marks
+bindsym $mod+F1 mark 1
+bindsym $mod+F2 mark 2
+bindsym $mod+F3 mark 3
+bindsym $mod+F4 mark 4
+bindsym $mod+F5 mark 5
+
+# switch to marks
+bindsym $mod+Shift+F1 [con_mark="1"] focus
+bindsym $mod+Shift+F2 [con_mark="2"] focus
+bindsym $mod+Shift+F3 [con_mark="3"] focus
+bindsym $mod+Shift+F4 [con_mark="4"] focus
+bindsym $mod+Shift+F5 [con_mark="5"] focus
 
 # worspace names
 set $1 1: www
