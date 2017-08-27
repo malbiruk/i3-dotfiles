@@ -5,6 +5,9 @@
 # modificator
 set $mod Mod4
 
+# i3-input
+bindsym $mod+i exec i3-input
+
 # floating modifier
 floating_modifier $mod
 
@@ -58,14 +61,25 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# marks
+bindsym $mod+F1 [con_mark="1"] focus
+bindsym $mod+F2 [con_mark="2"] focus
+bindsym $mod+F3 [con_mark="3"] focus
+bindsym $mod+F4 [con_mark="4"] focus
+bindsym $mod+F5 [con_mark="5"] focus
+bindsym $mod+F6 [con_mark="6"] focus
+bindsym $mod+F7 [con_mark="7"] focus
+bindsym $mod+F8 [con_mark="8"] focus
+bindsym $mod+F9 [con_mark="9"] focus
+
 # worspace names
 set $1 1: www
 set $2 2: term
 set $3 3: vim
-set $4 4: mpv
+set $4 4: pdf
 set $5 5: off
-set $6 6: pdf
-set $7 7: mus
+set $6 6: mus
+set $7 7: mpv
 set $8 8: gimp
 set $9 9: fm
 set $10 10: etc
@@ -96,9 +110,9 @@ bindsym $mod+Shift+0 move container to workspace $10
 
 # window rules
 assign [class="Chromium"] $1
-assign [class="mpv"] $4
+assign [class="mpv"] $7
 assign [class="libreoffice"] $5
-assign [class="Zathura"] $6
+assign [class="Zathura"] $4
 assign [class="Gimp"] $8
 assign [class="Pcmanfm"] $9
 
@@ -169,7 +183,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen
 ###############
 
 # source Xresources
-exec xrdb -merge ~/.Xresources
+exec_always xrdb -merge ~/.Xresources
 
 # font
 font pango:hack 6
@@ -213,6 +227,9 @@ bindsym $mod+b exec --no-startup-id i3-msg bar mode dock
 bindsym $mod+shift+b exec --no-startup-id i3-msg bar mode invisible
 
 # gaps
+gaps inner 6
+gaps outer 6
+
 bindsym $mod+g gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
 bindsym $mod+x gaps outer current plus 6

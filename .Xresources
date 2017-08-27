@@ -5,7 +5,8 @@
 #define r_hlbg #7f99a6
 
 rofi.modi:                           run,ssh,window
-
+rofi.run-command:                    zsh -c "{cmd}"
+rofi.run-shell-command:              {terminal} -e zsh -c "{cmd}"
 ! States: bg, fg, bgalt, hlbg, hlfg
 rofi.color-enabled: true
 rofi.color-normal: r_bg,r_fg,r_bg,r_bg,r_hlfg
@@ -17,7 +18,7 @@ rofi.color-window: r_bg,r_hlbg
 rofi.separator-style: none
 rofi.bw: 0
 rofi.columns: 1
-rofi.padding: 400
+rofi.padding: 460
 rofi.eh: 1
 
 rofi.yoffset: 0
@@ -37,7 +38,7 @@ URxvt.cursorBlink: true
 URxvt.urlLauncher: xdg-open
 
 URxvt.iso14755: False
-URxvt.perl-ext-common: default,
+URxvt.perl-ext-common: default
 URxvt.saveLines: 12000
 
 URxvt.font: xft:Hack:regular:pixelsize=12

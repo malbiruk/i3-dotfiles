@@ -83,6 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+setopt EXTENDED_GLOB
+unsetopt CASE_GLOB
 
 export EDITOR=vim
 
@@ -119,6 +121,7 @@ alias -g net='iw dev wlp2s0 link'
 alias -g vol='alsamixer'
 alias -g cpu='htop'
 alias -g temp='sensors'
+alias -g ram='free -h'
 alias -g c='clear'
 alias -g l='ls -la'
 alias -g h='history'
