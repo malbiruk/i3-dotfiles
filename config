@@ -62,18 +62,18 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # make marks
-bindsym $mod+F1 mark 1
-bindsym $mod+F2 mark 2
-bindsym $mod+F3 mark 3
-bindsym $mod+F4 mark 4
-bindsym $mod+F5 mark 5
+bindsym $mod+Shift+F1 mark 1
+bindsym $mod+Shift+F2 mark 2
+bindsym $mod+Shift+F3 mark 3
+bindsym $mod+Shift+F4 mark 4
+bindsym $mod+Shift+F5 mark 5
 
 # switch to marks
-bindsym $mod+Shift+F1 [con_mark="1"] focus
-bindsym $mod+Shift+F2 [con_mark="2"] focus
-bindsym $mod+Shift+F3 [con_mark="3"] focus
-bindsym $mod+Shift+F4 [con_mark="4"] focus
-bindsym $mod+Shift+F5 [con_mark="5"] focus
+bindsym $mod+F1 [con_mark="1"] focus
+bindsym $mod+F2 [con_mark="2"] focus
+bindsym $mod+F3 [con_mark="3"] focus
+bindsym $mod+F4 [con_mark="4"] focus
+bindsym $mod+F5 [con_mark="5"] focus
 
 # worspace names
 set $1 1: www
