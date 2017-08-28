@@ -159,6 +159,12 @@ bindsym $mod+Return exec urxvt
 # applications
 bindsym $mod+d exec rofi -show run
 
+# locker
+bindsym --release $mod+z exec slock
+
+# log out menu
+bindsym $mod+q exec /home/klim/.config/i3/logout_menu.sh
+
 # screenshoter
 bindsym Print exec scrot -e 'mv $f Pictures/Screenshots/'
 bindsym Shift+Print exec scrot -u -e 'mv $f Pictures/Screenshots/'
@@ -246,4 +252,4 @@ exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
 exec_always --no-startup-id compton --config /home/klim/.config/compton.conf
 
 # hide mouse pointer
-exec --no-startup-id unclutter
+exec --no-startup-id xbanish
