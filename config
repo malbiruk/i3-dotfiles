@@ -165,6 +165,9 @@ bindsym --release $mod+z exec slock
 # log out menu
 bindsym $mod+q exec /home/klim/.config/i3/logout_menu.sh
 
+# monitors control
+bindsym $mod+p exec lxrandr
+
 # screenshoter
 bindsym Print exec scrot -e 'mv $f Pictures/Screenshots/'
 bindsym Shift+Print exec scrot -u -e 'mv $f Pictures/Screenshots/'
@@ -195,7 +198,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen
 exec_always xrdb -merge ~/.Xresources
 
 # font
-font pango:hack 6
+font pango:Hack 6
 
 # thin borders
 new_window pixel 2
