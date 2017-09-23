@@ -41,8 +41,8 @@ URxvt.iso14755: False
 URxvt.perl-ext-common: default,tabbed
 URxvt.saveLines: 12000
 
-URxvt.font: xft:Monaco:regular:pixelsize=12
-URxvt.boldFont: xft:Monaco:bold:pixelsize=12
+URxvt.font: xft:Monaco:regular:pixelsize=10
+URxvt.boldFont: xft:Monaco:bold:pixelsize=10
 URxvt.letterSpace: -1
 
 /* # scrollbar - true (default) or false */
@@ -90,7 +90,7 @@ urxvt.color15:      #ffffff */
 
 ! special
 urxvt.foreground:   #000000
-urxvt.background:   #f1f1f1
+urxvt.background:   #ffffff
 
 ! black
 urxvt.color0:       #eeeeee
