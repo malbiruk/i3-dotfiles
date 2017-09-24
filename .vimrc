@@ -24,9 +24,9 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 hi CursorLine cterm=None ctermbg=None ctermfg=None
-hi CursorColumn cterm=None ctermbg=DarkGray ctermfg=None
-hi LineNr ctermfg=DarkGray
-hi CursorLineNr ctermfg=White
+hi CursorColumn cterm=None ctermbg=None ctermfg=None
+hi LineNr ctermfg=Gray
+hi CursorLineNr ctermfg=Blue
 hi IncSearch ctermfg=None
 
 " Cyrillic
