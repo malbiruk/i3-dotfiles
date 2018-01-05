@@ -3,14 +3,15 @@
 #define r_fg   #97a4ad
 #define r_hlfg #ffe4ce
 #define r_hlbg #7f99a6
+#define r_urg  #9f5248
 
 rofi.modi:                           run,ssh,window
 rofi.run-command:                    zsh -c "{cmd}"
-rofi.run-shell-command:              {terminal} -e zsh -c "{cmd}"
+rofi.run-shell-command:              urxvt -e zsh -c "{cmd}"
 ! States: bg, fg, bgalt, hlbg, hlfg
 rofi.color-enabled: true
 rofi.color-normal: r_bg,r_fg,r_bg,r_bg,r_hlfg
-rofi.color-urgent: r_bg,#e9f5248,r_bg,r_bg,r_hlbg
+rofi.color-urgent: r_bg,r_urg,r_bg,r_bg,r_hlbg
 rofi.color-active: r_bg,r_hlbg,r_bg,r_bg,r_hlfg
 !rofi.states: background, border
 rofi.color-window: r_bg,r_hlbg
@@ -48,12 +49,12 @@ URxvt.letterSpace: -1
 /* # scrollbar - true (default) or false */
 URxvt.scrollBar: false
 
-URxvt.tabbed.tabbar-fg: 8
+URxvt.tabbed.tabbar-fg: 12
 URxvt.tabbed.tabbar-bg: -1
-URxvt.tabbed.tab-fg: 12
+URxvt.tabbed.tab-fg: 6
 URxvt.tabbed.tab-bg: -1
 
-/*urxvt.foreground:   #ffe4ce
+urxvt.foreground:   #ffe4ce
 urxvt.background:   #030d10
 
 ! black
@@ -86,9 +87,9 @@ urxvt.color14:      #7f99a6
 
 ! white
 urxvt.color7:       #ffe4ce
-urxvt.color15:      #ffffff */
+urxvt.color15:      #ffffff 
 
-! special
+/*! special
 urxvt.foreground:   #000000
 urxvt.background:   #ffffff
 
@@ -122,4 +123,4 @@ urxvt.color14:      #00acc1
 
 ! white
 urxvt.color7:       #424242
-urxvt.color15:      #757575
+urxvt.color15:      #757575*/
