@@ -267,6 +267,7 @@ bindsym $mod+shift+b exec --no-startup-id i3-msg bar mode invisible
 # gaps
 gaps inner 6
 gaps outer 6
+smart_gaps on
 
 bindsym $mod+g gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
