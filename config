@@ -55,6 +55,9 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# toggle sticky for floating
+bindsym $mod+shift+s sticky toggle
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -62,11 +65,11 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # make marks
-bindsym $mod+Shift+F1 mark 1
-bindsym $mod+Shift+F2 mark 2
-bindsym $mod+Shift+F3 mark 3
-bindsym $mod+Shift+F4 mark 4
-bindsym $mod+Shift+F5 mark 5
+bindsym $mod+Shift+F1 mark --add --toggle 1
+bindsym $mod+Shift+F2 mark --add --toggle 2
+bindsym $mod+Shift+F3 mark --add --toggle 3
+bindsym $mod+Shift+F4 mark --add --toggle 4
+bindsym $mod+Shift+F5 mark --add --toggle 5
 
 # switch to marks
 bindsym $mod+F1 [con_mark="1"] focus
@@ -111,18 +114,36 @@ bindsym $mod+Shift+8 move container to workspace $8
 bindsym $mod+Shift+9 move container to workspace $9
 bindsym $mod+Shift+0 move container to workspace $10
 
+#move focused container to workspace and switch to that workspace
+bindsym $mod+Control+1 move container to workspace $1; workspace $1
+bindsym $mod+Control+2 move container to workspace $2; workspace $2
+bindsym $mod+Control+3 move container to workspace $3; workspace $3
+bindsym $mod+Control+4 move container to workspace $4; workspace $4
+bindsym $mod+Control+5 move container to workspace $5; workspace $5
+bindsym $mod+Control+6 move container to workspace $6; workspace $6
+bindsym $mod+Control+7 move container to workspace $7; workspace $7
+bindsym $mod+Control+8 move container to workspace $8; workspace $8
+bindsym $mod+Control+9 move container to workspace $9; workspace $9
+bindsym $mod+Control+0 move container to workspace $10; workspace $10
+
 # window rules
 assign [class="Chromium"] $1
 assign [class="mpv"] $7
 assign [class="libreoffice"] $5
+assign [class="Wps"] $5
 assign [class="Zathura"] $4
 assign [class="Gimp"] $8
 assign [class="Pcmanfm"] $9
+assign [class="Ardour-5.9.0"] $6
 
 for_window [class="feh"] floating enable
 
 # default workspace
 exec --no-startup-id i3-msg 'workspace $2'
+
+# move workspace to output left/right
+bindsym $mod+control+Left move workspace to output left
+bindsym $mod+control+Right move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,6 +198,9 @@ bindsym --release Control+Print exec scrot -s -e 'mv $f Pictures/Screenshots/'
 exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3
 exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
+# right control as escape key
+exec xmodmap -e "keycode 105 = Escape"
+
 # change layout
 exec --no-startup-id setxkbmap -layout us,ru -option grp:alt_shift_toggle
 
@@ -188,7 +212,6 @@ bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 # brightness control
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
-
 
 ###############
 # R I C I N G #
@@ -203,6 +226,9 @@ font pango:Hack 6
 # thin borders
 new_window pixel 2
 new_float pixel 2
+
+# hide edge borders
+hide_edge_borders smart
 
 # colors
 set $black  #030d10
