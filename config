@@ -201,7 +201,7 @@ exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFi
 exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
 # right control as escape key
-exec xmodmap -e "keycode 105 = Escape"
+exec_always --no-startup-id xmodmap -e "keycode 105 = Escape"
 
 # change layout
 exec --no-startup-id setxkbmap -layout us,ru -option grp:alt_shift_toggle
