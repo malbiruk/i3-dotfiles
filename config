@@ -128,15 +128,17 @@ bindsym $mod+Control+0 move container to workspace $10; workspace $10
 
 # window rules
 assign [class="Chromium"] $1
-assign [class="mpv"] $7
+assign [class="Zathura"] $4
 assign [class="libreoffice"] $5
 assign [class="Wps"] $5
 assign [class="Wpp"] $5
 assign [class="Et"] $5
-assign [class="Zathura"] $4
+assign [class="Ardour-5.9.0"] $6
+assign [class="Lmms"] $6
+assign [class="Audacity"] $6
+assign [class="mpv"] $7
 assign [class="Gimp"] $8
 assign [class="Pcmanfm"] $9
-assign [class="Ardour-5.9.0"] $6
 
 for_window [class="feh"] floating enable
 
