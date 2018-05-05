@@ -137,6 +137,7 @@ assign [class="Ardour-5.9.0"] $6
 assign [class="Lmms"] $6
 assign [class="Audacity"] $6
 assign [class="mpv"] $7
+assign [class="Pitivi"] $7
 assign [class="Gimp"] $8
 assign [class="Pcmanfm"] $9
 
@@ -182,13 +183,15 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Return exec urxvt
 
 # applications
-bindsym $mod+d exec rofi -show run
+#bindsym $mod+d exec rofi -show run 
+bindsym $mod+d exec dmenu_run -b -fn 'Hack-6' -nb '#0f0f0f' -nf '#888a85' -sb '#0f0f0f' -sf '#ffffff'
 
 # locker
 bindsym --release $mod+z exec slock
 
 # log out menu
-bindsym $mod+q exec /home/klim/.config/i3/logout_menu.sh
+#bindsym $mod+q exec /home/klim/.config/i3/logout_menu.sh
+bindsym $mod+q exec /home/klim/.config/i3/dmenu_logout_menu.sh
 
 # monitors control
 bindsym $mod+p exec lxrandr
@@ -228,26 +231,26 @@ exec_always xrdb -merge ~/.Xresources
 font pango:Hack 6
 
 # thin borders
-new_window pixel 2
-new_float pixel 2
+#new_window pixel 2
+#new_float pixel 2
 
 # hide edge borders
 hide_edge_borders smart
 
 # colors
-set $black  #030d10
-set $grey   #97a4ad
-set $white  #ffe4ce
-set $red    #9f5248
+set $black  #0f0f0f
+set $grey   #888a85
+set $white  #ffffff
+set $red    #ba8700
 set $blue   #5a7e8c
 set $cyan   #7f99a6
 
 # window colors
 #                       border              background         text             indicator
-client.focused          $blue               $blue              $white           $cyan
-client.unfocused        $black		    $black 	       $grey     	$cyan
-client.focused_inactive $black  	    $black 	       $grey		$cyan
-client.urgent           $red    	    $red 	       $white           $cyan
+client.focused          $black              $black             $white           $white
+client.unfocused        $black		    $black 	       $grey     	$white
+client.focused_inactive $black  	    $black 	       $grey		$white
+client.urgent           $black    	    $black 	       $red             $white
 
 # i3bar configuration
 bar {
@@ -261,7 +264,7 @@ bar {
         #                          border             background         text
                 focused_workspace  $black	      $black 		 $white
                 inactive_workspace $black             $black		 $grey
-                urgent_workspace   $red 	      $red               $white
+                urgent_workspace   $black 	      $black             $red
         }
 }
 

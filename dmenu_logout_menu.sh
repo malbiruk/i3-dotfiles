@@ -4,8 +4,8 @@
 #
 ###
 
-DMENU='dmenu -i -b -fn 'Hack-6' -nb '#030d10' -nf '#97a4ad' -sb '#030d10' -sf '#ffe4ce''
-choice=$(echo -e "logout\nsuspend\nrestart\nshutdown" | $DMENU)
+DMENU='dmenu -i -b -fn 'Hack-6' -nb '#0f0f0f' -nf '#888a85' -sb '#0f0f0f' -sf '#ffffff''
+choice=$(echo -e "suspend\nlogout\nrestart\nshutdown" | $DMENU)
 
 case "$choice" in
   logout) i3-msg exit & ;;
