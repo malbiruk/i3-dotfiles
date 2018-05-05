@@ -81,7 +81,7 @@ bindsym $mod+F5 [con_mark="5"] focus
 # worspace names
 set $1 1: www
 set $2 2: term
-set $3 3: vim
+set $3 3: term
 set $4 4: pdf
 set $5 5: off
 set $6 6: mus
@@ -181,6 +181,9 @@ bindsym $mod+r mode "resize"
 
 # terminal
 bindsym $mod+Return exec urxvt
+
+# browser
+bindsym $mod+Shift+w exec chromium
 
 # applications
 #bindsym $mod+d exec rofi -show run 
