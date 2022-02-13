@@ -181,7 +181,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+d exec /home/klim/.config/i3/rofi.sh
 
 # locker
-bindsym --release $mod+z exec slock
+bindsym --release $mod+l exec slock
 
 # log out menu
 bindsym $mod+Shift+q exec /home/klim/.config/i3/logout_menu.sh
