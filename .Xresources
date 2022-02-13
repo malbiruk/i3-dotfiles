@@ -1,0 +1,110 @@
+/* Rofi */
+#define r_bg   #000000
+#define r_fg   #666666
+#define r_hlfg #cccccc
+#define r_hlbg #2d2d2d
+#define r_urg  #f2777a
+
+rofi.modi:                           drun,window,find:~/.local/share/rofi/finder.sh
+rofi.run-command:                    zsh -c "{cmd}"
+rofi.run-shell-command:              urxvt -e zsh -c "{cmd}"
+! States: bg, fg, bgalt, hlbg, hlfg
+rofi.color-enabled: true
+rofi.color-normal: r_bg,r_fg,r_bg,r_bg,r_hlfg
+rofi.color-urgent: r_bg,r_urg,r_bg,r_bg,r_hlbg
+rofi.color-active: r_bg,r_hlbg,r_bg,r_bg,r_hlfg
+!rofi.states: background, border
+rofi.color-window: r_bg,r_hlbg
+
+rofi.separator-style: none
+rofi.bw: 0
+rofi.columns: 1
+rofi.padding: 460
+rofi.eh: 1
+
+rofi.yoffset: 0
+rofi.location: 0
+rofi.width: 100
+rofi.font: Noto Sans 12
+rofi.lines: 5
+rofi.hide-scrollbar: true
+rofi.terminal: urxvt
+
+/*###############
+# URXVT settings
+###############*/
+URxvt.cursorUnderline: true
+URxvt.cursorBlink: true
+
+URxvt.urlLauncher: xdg-open
+
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,tabbed
+URxvt.saveLines: 12000
+
+URxvt.font: xft:Hack:regular:pixelsize=14
+URxvt.boldFont: xft:Hack:bold:pixelsize=14
+URxvt.letterSpace: -1
+
+/* # scrollbar - true (default) or false */
+URxvt.scrollBar: false
+
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
+
+URxvt.tabbed.tabbar-fg: 12
+URxvt.tabbed.tabbar-bg: -1
+URxvt.tabbed.tab-fg: 6
+URxvt.tabbed.tab-bg: -1
+
+#define t_background        #2d2d2d
+#define t_current_line      #393939
+#define t_selection      	#515151
+#define t_foreground      	#cccccc
+#define t_comment	     	#999999
+#define t_red		     	#f2777a
+#define t_orange	     	#f99157
+#define t_yellow        	#ffcc66
+#define t_green	        	#99cc99
+#define t_aqua	        	#66cccc
+#define t_blue	        	#6699cc
+#define t_purple        	#cc99cc
+
+
+*.foreground:   t_foreground
+*.background:   t_background
+*.cursorColor:  #aeafad
+
+! Black / Grey
+*.color0:       #000000
+*.color8:       #666666
+
+! Red / Bright Red
+*.color1:       t_red
+*.color9:       #FF3334
+
+! Green + Bright Green
+*.color2:       t_green
+*.color10:      #9ec400
+
+! Yellow (Orange) + Bright Yellow (Yellow)
+*.color3:       t_orange
+*.color11:      t_yellow
+
+! Blue + Bright Blue
+*.color4:       t_blue
+*.color12:      t_blue
+
+! Magenta (Purple) + Bright Magenta
+*.color5:       t_purple
+*.color13:      #b777e0
+
+! Cyan (Aqua) + Bright Cyan
+*.color6:       t_aqua
+*.color14:      #54ced6
+
+! Light Grey (Selection) + White (Current Line)
+*.color7:       t_selection
+*.color15:      t_current_line
