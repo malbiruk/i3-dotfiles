@@ -201,8 +201,9 @@ exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 exec_always --no-startup-id setxkbmap -option "caps:swapescape"
 
 # change layout
-exec_always --no-startup-id setxkbmap -layout "us,ru" 
-exec_always --no-startup-id setxkbmap -option "grp:shifts_toggle"
+# exec_always --no-startup-id setxkbmap -layout "us,ru" 
+# exec_always --no-startup-id setxkbmap -option "grp:shifts_toggle"
+exec_always "setxkbmap -model pc105 -layout us,ru -option grp:shifts_toggle"
 
 # settings
 # touchpad config
@@ -219,7 +220,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen b
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
 
 # tray
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
 
@@ -241,8 +242,9 @@ new_float pixel 2
 hide_edge_borders smart
 
 # colors
+set $trans  #00000000
 set $black  #2d2d2d
-set $grey   #666666
+set $grey   #888888
 set $white  #cccccc
 set $red    #f2777a
 set $blue   #6699cc
@@ -260,15 +262,17 @@ client.urgent           $red                $red               $black           
 # i3bar configuration
 bar {
         mode dock
+        i3bar_command i3bar -t
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
         separator_symbol "|"
-        font pango:Hack 6
+        font pango: Hack 9
+        position top
         colors {
-                background $black
-                separator  $black
+                background $trans
+                separator  $trans
         #                          border             background         text
-                focused_workspace  $black             $black             $white
-                inactive_workspace $black             $black             $grey
+                focused_workspace  $trans             $trans             $white
+                inactive_workspace $trans             $trans             $grey
                 urgent_workspace   $cyan              $cyan              $black
         }
 }
@@ -291,7 +295,7 @@ bindsym $mod+control+g exec --no-startup-id i3-msg gaps inner current set 0 && i
 exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
 
 # compositor
-exec --no-startup-id compton --config /home/klim/.config/compton.conf
+exec_always --no-startup-id compton --config /home/klim/.config/compton.conf
 
 # hide mouse pointer
 exec --no-startup-id xbanish
