@@ -128,6 +128,7 @@ bindsym $mod+Control+0 move container to workspace $10; workspace $10
 
 # window rules
 assign [class="Google-chrome"] $1
+assign [class='Atom'] $3
 assign [class="evince"] $4
 assign [class="libreoffice"] $5
 assign [class="Reaper"] $6
