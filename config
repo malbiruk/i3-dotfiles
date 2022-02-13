@@ -199,7 +199,7 @@ exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFi
 exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
 # right capslock as escape key
-exec_always --no-startup-id setxkbmap -option "caps:swapescape"
+exec_always --no-startup-id "setxkbmap -option caps:swapescape"
 
 # change layout
 # exec_always --no-startup-id setxkbmap -layout "us,ru" 
@@ -211,14 +211,14 @@ exec_always "setxkbmap -model pc105 -layout us,ru -option grp:shifts_toggle"
 exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3
 exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
-# sound control
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -qc 0 set Master 2dB+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -qc 0 set Master 2dB-
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
+# Sreen brightness controls
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
 
 # tray
 exec_always --no-startup-id nm-applet
@@ -256,7 +256,7 @@ set $magenta #cc99cc
 
 # window colors
 #                       border              background         text             indicator
-client.focused          $red               $red              $black              $green
+client.focused          $yellow             $yellow              $black              $green
 client.unfocused        $black              $black             $white            $green
 client.focused_inactive $black              $black             $white            $green
 client.urgent           $cyan               $cyan               $black           $green
@@ -268,13 +268,13 @@ bar {
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
         separator_symbol "|"
         font pango: Hack 9
-#        position top
+        position top
         colors {
                 background $trans
                 separator  $trans
         #                          border             background         text
-                focused_workspace  $trans             $trans             #2d2d2d
-                inactive_workspace $trans             $trans             $grey
+                focused_workspace  $trans             $trans             #ffffff
+                inactive_workspace $trans             $trans             $black
                 urgent_workspace   $cyan              $cyan              $black
         }
 }
