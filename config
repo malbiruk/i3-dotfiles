@@ -245,20 +245,21 @@ hide_edge_borders smart
 # colors
 set $trans  #00000000
 set $black  #2d2d2d
-set $grey   #888888
+set $grey   #666666
 set $white  #cccccc
 set $red    #f2777a
 set $blue   #6699cc
 set $cyan   #66cccc
 set $yellow #ffcc66
+set $green  #99cc99
 set $magenta #cc99cc
 
 # window colors
 #                       border              background         text             indicator
-client.focused          $cyan               $cyan              $black           $magenta
-client.unfocused        $black              $black             $white            $magenta
-client.focused_inactive $black              $black             $white            $magenta
-client.urgent           $red                $red               $black           $magenta
+client.focused          $red               $red              $black              $green
+client.unfocused        $black              $black             $white            $green
+client.focused_inactive $black              $black             $white            $green
+client.urgent           $cyan               $cyan               $black           $green
 
 # i3bar configuration
 bar {
@@ -267,12 +268,12 @@ bar {
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
         separator_symbol "|"
         font pango: Hack 9
-        position top
+#        position top
         colors {
                 background $trans
                 separator  $trans
         #                          border             background         text
-                focused_workspace  $trans             $trans             $white
+                focused_workspace  $trans             $trans             #2d2d2d
                 inactive_workspace $trans             $trans             $grey
                 urgent_workspace   $cyan              $cyan              $black
         }
