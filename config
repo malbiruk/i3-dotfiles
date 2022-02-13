@@ -131,6 +131,7 @@ assign [class="Google-chrome"] $1
 assign [class="Atom"] $3
 assign [class="evince"] $4
 assign [class="libreoffice"] $5
+assign [class="Spotify"] $6
 assign [class="REAPER"] $6
 assign [class="vlc"] $7
 assign [class="Gimp"] $8
