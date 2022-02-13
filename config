@@ -299,3 +299,6 @@ exec_always --no-startup-id compton --config /home/klim/.config/compton.conf
 
 # hide mouse pointer
 exec --no-startup-id xbanish
+
+# notifications
+bindsym $mod+n exec dunstctl history-pop
