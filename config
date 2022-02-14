@@ -12,7 +12,7 @@ bindsym $mod+i exec i3-input
 floating_modifier $mod
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # change focus
 bindsym $mod+j focus left
@@ -184,7 +184,7 @@ bindsym $mod+d exec /home/klim/.config/i3/rofi.sh
 bindsym --release $mod+z exec slock
 
 # log out menu
-bindsym $mod+Shift+q exec /home/klim/.config/i3/logout_menu.sh
+bindsym $mod+q exec /home/klim/.config/i3/logout_menu.sh
 
 # monitors control
 bindsym $mod+p exec lxrandr
