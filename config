@@ -70,6 +70,13 @@ bindsym $mod+Shift+F2 mark --add --toggle 2
 bindsym $mod+Shift+F3 mark --add --toggle 3
 bindsym $mod+Shift+F4 mark --add --toggle 4
 bindsym $mod+Shift+F5 mark --add --toggle 5
+bindsym $mod+Shift+F6 mark --add --toggle 6
+bindsym $mod+Shift+F7 mark --add --toggle 7
+bindsym $mod+Shift+F8 mark --add --toggle 8
+bindsym $mod+Shift+F9 mark --add --toggle 9
+bindsym $mod+Shift+F10 mark --add --toggle 10
+bindsym $mod+Shift+F11 mark --add --toggle 11
+bindsym $mod+Shift+F12 mark --add --toggle 12
 
 # switch to marks
 bindsym $mod+F1 [con_mark="1"] focus
@@ -77,6 +84,13 @@ bindsym $mod+F2 [con_mark="2"] focus
 bindsym $mod+F3 [con_mark="3"] focus
 bindsym $mod+F4 [con_mark="4"] focus
 bindsym $mod+F5 [con_mark="5"] focus
+bindsym $mod+F6 [con_mark="6"] focus
+bindsym $mod+F7 [con_mark="7"] focus
+bindsym $mod+F8 [con_mark="8"] focus
+bindsym $mod+F9 [con_mark="9"] focus
+bindsym $mod+F10 [con_mark="10"] focus
+bindsym $mod+F11 [con_mark="11"] focus
+bindsym $mod+F12 [con_mark="12"] focus
 
 # worspace names
 set $1 1: www
