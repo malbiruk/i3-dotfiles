@@ -1,6 +1,7 @@
 # My i3 setup
 ### Features
 - show/hide i3bar
+- configure inner and outer gaps via shortcuts
 - fullscreen rofi with shadow and blur
 - rofi includes file finder
 - logout menu using rofi
