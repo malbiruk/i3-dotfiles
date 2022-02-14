@@ -276,7 +276,7 @@ client.urgent           $cyan               $cyan               $black          
 
 # i3bar configuration
 bar {
-        mode dock
+        mode invisible
         i3bar_command i3bar -t
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
         separator_symbol "|"
@@ -296,8 +296,8 @@ bindsym $mod+b exec --no-startup-id i3-msg bar mode dock
 bindsym $mod+shift+b exec --no-startup-id i3-msg bar mode invisible
 
 # gaps
-gaps inner 36
-gaps outer 0
+gaps inner 18
+gaps outer 18
 # smart_gaps on
 
 bindsym $mod+g gaps inner current plus 6
