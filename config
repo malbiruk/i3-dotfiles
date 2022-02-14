@@ -87,7 +87,7 @@ set $5 5: off
 set $6 6: mus
 set $7 7: vid
 set $8 8: gimp
-set $9 9: fm
+set $9 9: etc
 set $10 10: etc
 
 # switch to workspace
@@ -135,7 +135,6 @@ assign [class="Spotify"] $6
 assign [class="REAPER"] $6
 assign [class="vlc"] $7
 assign [class="Gimp"] $8
-assign [class="Nautilus"] $9
 
 for_window [class="feh"] floating enable
 
@@ -180,9 +179,6 @@ bindsym $mod+Return exec urxvt
 
 # applications
 bindsym $mod+d exec /home/klim/.config/i3/rofi.sh
-
-# locker
-bindsym --release $mod+l exec slock
 
 # log out menu
 bindsym $mod+Shift+q exec /home/klim/.config/i3/logout_menu.sh
