@@ -215,7 +215,7 @@ exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFi
 exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
 # right capslock as escape key
-exec_always --no-startup-id "setxkbmap -option caps:swapescape"
+exec_always "sleep 0.1 && setxkbmap -option caps:swapescape"
 
 # change layout
 # exec_always --no-startup-id setxkbmap -layout "us,ru" 
@@ -313,10 +313,13 @@ bindsym $mod+control+g exec --no-startup-id i3-msg gaps inner current set 0 && i
 exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
 
 # compositor
-exec_always --no-startup-id compton --config /home/klim/.config/compton.conf
+exec_always --no-startup-id picom --experimental-backends --config /home/klim/.config/picom.conf
 
 # hide mouse pointer
 exec --no-startup-id xbanish
 
 # notifications
 bindsym $mod+n exec dunstctl history-pop
+
+# autostart
+exec sleep 0.1 && /home/klim/.config/i3/rofi.sh
