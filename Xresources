@@ -9,8 +9,8 @@ Xft.lcdfilter: lcddefault
 
 /* Rofi */
 #define r_bg   #000000
-#define r_fg   #666666
-#define r_hlfg #cccccc
+#define r_fg   #888888
+#define r_hlfg #ffffff
 #define r_hlbg #2d2d2d
 #define r_urg  #f2777a
 
@@ -57,11 +57,6 @@ URxvt.letterSpace: -1
 
 /* # scrollbar - true (default) or false */
 URxvt.scrollBar: false
-
-URxvt.keysym.Control-Up:     \033[1;5A
-URxvt.keysym.Control-Down:   \033[1;5B
-URxvt.keysym.Control-Left:   \033[1;5D
-URxvt.keysym.Control-Right:  \033[1;5C
 
 URxvt.tabbed.tabbar-fg: 12
 URxvt.tabbed.tabbar-bg: -1
