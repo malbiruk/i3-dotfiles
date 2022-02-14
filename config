@@ -101,8 +101,8 @@ set $5 5: pdf
 set $6 6: off
 set $7 7: mus
 set $8 8: vid
-set $9 9: gimp
-set $10 10: etc
+set $9 9: etc
+set $10 10: float
 
 # switch to workspace
 bindsym $mod+1 workspace $1
@@ -152,8 +152,10 @@ assign [class="Gimp"] $8
 
 for_window [class="feh"] floating enable
 
+exec_always --no-startup-id python3 /home/klim/.config/i3/float_ws.py
+
 # default workspace
-exec --no-startup-id i3-msg 'workspace $2'
+# exec --no-startup-id i3-msg 'workspace $2'
 
 # move workspace to output left/right
 bindsym $mod+control+Left move workspace to output left
@@ -190,6 +192,7 @@ bindsym $mod+r mode "resize"
 
 # terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec python3 /home/klim/.config/i3/urxvt_float.py 
 
 # applications
 bindsym $mod+d exec /home/klim/.config/i3/rofi.sh
