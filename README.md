@@ -6,11 +6,13 @@
 - logout menu using rofi
 - shift+enter to open floating terminal
 - floating workspace (10)
+- some automatic windows placement on workspaces
+- window markers using win+shift+f{number}
 - capslock switches escape
 - configured media buttons
 - nice colors, shadows, transitions
 - pretty dunst notifications
-- usable vim config
+- usable zsh and vim configs
 
 ### Appearance
 
@@ -23,9 +25,18 @@
 `i3-gaps picom rofi amixer light i3blocks i3-ipc oh-my-zsh urxvt slock`
 
 ### Some screenshots
-![pfetch]('fetch.png')
 
+Clean
+![clean](clean.png)
 
+Chrome, Nautilus, pfetch
+![pfetch](fetch.png)
 
+Atom, vim
+![text editors](txt.png)
 
-![neofetch](scrot.png)
+rofi
+![rofi](rofi.png)
+
+#cb99cc
+![wallpaper](wallpaper.jpg)
