@@ -7,7 +7,7 @@
 - shift+enter to open floating terminal
 - floating workspace (10)
 - some automatic windows placement on workspaces
-- window markers using win+shift+f{number}
+- window markers using win+shift+F{number}
 - capslock switches escape
 - configured media buttons
 - nice colors, shadows, transitions
