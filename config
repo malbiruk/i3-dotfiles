@@ -142,13 +142,13 @@ bindsym $mod+Control+0 move container to workspace $10; workspace $10
 
 # window rules
 assign [class="Google-chrome"] $1
-assign [class="Atom"] $3
-assign [class="evince"] $4
-assign [class="libreoffice"] $5
-assign [class="Spotify"] $6
-assign [class="REAPER"] $6
-assign [class="vlc"] $7
-assign [class="Gimp"] $8
+assign [class="Atom"] $4
+assign [class="evince"] $5
+assign [class="libreoffice"] $6
+assign [class="Spotify"] $7
+assign [class="REAPER"] $7
+assign [class="vlc"] $8
+assign [class="Gimp"] $9
 
 for_window [class="feh"] floating enable
 
