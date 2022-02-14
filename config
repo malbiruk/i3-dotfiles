@@ -80,14 +80,14 @@ bindsym $mod+F5 [con_mark="5"] focus
 
 # worspace names
 set $1 1: www
-set $2 2: term
-set $3 3: txt
-set $4 4: pdf
-set $5 5: off
-set $6 6: mus
-set $7 7: vid
-set $8 8: gimp
-set $9 9: etc
+set $2 2: mes
+set $3 3: term
+set $4 4: txt
+set $5 5: pdf
+set $6 6: off
+set $7 7: mus
+set $8 8: vid
+set $9 9: gimp
 set $10 10: etc
 
 # switch to workspace
