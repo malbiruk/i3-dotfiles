@@ -142,10 +142,12 @@ bindsym $mod+Control+0 move container to workspace $10; workspace $10
 
 # window rules
 assign [class="Google-chrome"] $1
+assign [class="Telegram"] $2
+assign [class="Slack"] $2
 assign [class="Atom"] $4
 assign [class="evince"] $5
 assign [class="libreoffice"] $6
-assign [class="Spotify"] $7
+for_window [class="Spotify"] move to workspace $7
 assign [class="REAPER"] $7
 assign [class="vlc"] $8
 assign [class="Gimp"] $9
@@ -324,3 +326,4 @@ bindsym $mod+n exec dunstctl history-pop
 
 # autostart
 exec sleep 0.1 && /home/klim/.config/i3/rofi.sh
+exec --no-startup-id gnome-keyring-daemon -d
