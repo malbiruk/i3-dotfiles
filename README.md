@@ -10,7 +10,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 - fullscreen rofi with shadow and blur
 - rofi includes file finder
 - logout menu using rofi
-- shift+enter to open floating terminal
+- win+shift+enter to open floating terminal
 - floating workspace (10)
 - some automatic windows placement on workspaces
 - window markers using win+shift+F{number}
