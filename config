@@ -146,15 +146,16 @@ assign [class="Telegram"] $2
 assign [class="Slack"] $2
 assign [class="Atom"] $4
 assign [class="Evince"] $5
+assign [class="Zathura"] $5
 for_window [class="libreoffice"] move to workspace $6
 for_window [class="Spotify"] move to workspace $7
 assign [class="REAPER"] $7
 assign [class="vlc"] $8
 assign [class="Gimp"] $9
 
-for_window [class="feh"] floating enable
+for_window [workspace="10: float"] floating enable
 
-exec_always --no-startup-id python3 /home/klim/.config/i3/float_ws.py
+# exec_always --no-startup-id python3 /home/klim/.config/i3/float_ws.py
 
 # default workspace
 # exec --no-startup-id i3-msg 'workspace $2'
