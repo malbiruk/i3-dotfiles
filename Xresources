@@ -110,5 +110,5 @@ URxvt.tabbed.tab-bg: -1
 *.color14:      t_aqua
 
 ! Light Grey (Selection) + White (Current Line)
-*.color7:       t_selection
-*.color15:      t_current_line
+*.color7:       #666666
+*.color15:      #888888
