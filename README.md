@@ -33,7 +33,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Some screenshots
 
-Clean
+Floating workspace showing i3bar and notification
 ![clean](clean.png)
 
 Chrome, Nautilus, pfetch
