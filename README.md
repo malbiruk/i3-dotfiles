@@ -1,7 +1,12 @@
 # My i3 setup
-### Features
+
+Most of scripts and many config parts I've just found on the internet 👉👈
+
+## Features
+
 - show/hide i3bar
 - configure inner and outer gaps via shortcuts
+- toggle gaps
 - fullscreen rofi with shadow and blur
 - rofi includes file finder
 - logout menu using rofi
@@ -15,17 +20,18 @@
 - pretty dunst notifications
 - usable zsh and vim configs
 
-### Appearance
+## Appearance
 
 **GTK-Theme:** Orchis dark compact <br>
 **Icons:** Xenlism Wildfire Monday <br>
 **Font:** Hack <br>
 **Colorscheme:** Tomorrow Night Eighties
 
-### Dependencies
-`i3-gaps picom rofi amixer light i3blocks i3-ipc oh-my-zsh urxvt slock`
+## Dependencies
 
-### Some screenshots
+`i3-gaps picom rofi amixer light i3blocks i3-ipc oh-my-zsh urxvt slock jq`
+
+## Some screenshots
 
 Clean
 ![clean](clean.png)
