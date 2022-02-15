@@ -6,7 +6,7 @@ if [ $res = "logout" ]; then
     i3-msg exit
 fi
 if [ $res = "suspend" ]; then
-    systemctl suspend
+    slock & systemctl suspend
 fi
 if [ $res = "restart" ]; then
     systemctl reboot
