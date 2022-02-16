@@ -298,7 +298,8 @@ client.urgent           $cyan               $cyan               $black          
 
 # i3bar configuration
 bar {
-        mode hide
+        mode invisible
+        binding_mode_indicator no
         i3bar_command i3bar -t
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
         separator_symbol "|"
@@ -314,8 +315,8 @@ bar {
         }
 }
 
-bindsym $mod --release bar hidden_state toggle
-bindsym $mod+b bar mode toggle
+# bindsym $mod --release bar hidden_state toggle
+bindsym $mod+b exec /home/klim/.config/i3/i3bartoggle.sh
 
 # gaps
 gaps inner 18

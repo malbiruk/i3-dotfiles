@@ -4,7 +4,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Features
 
-- toggle i3bar, shows while pressing win
+- toggle i3bar
 - configure inner and outer gaps via shortcuts
 - toggle gaps
 - fullscreen rofi with shadow and blur
