@@ -121,3 +121,5 @@ alias jpserv='ssh -N -f -L localhost:8889:localhost:8889 -p 17222 klim@nmr63.nmr
 
 bindkey "^[^[[D" backward-word
 bindkey "^[^[[C" forward-word
+
+export TERM=xterm-256color
