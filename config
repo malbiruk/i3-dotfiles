@@ -344,4 +344,5 @@ bindsym $mod+n exec dunstctl history-pop
 
 # autostart
 exec sleep 0.1 && /home/klim/.config/i3/rofi.sh
-exec --no-startup-id gnome-keyring-daemon -d
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
+exec --no-startup-id numlockx
