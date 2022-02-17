@@ -171,7 +171,7 @@ assign [class="vlc"] $8
 assign [class="Gimp"] $9
 
 # floating rules
-for_window [class="Toplevel"] floating enable
+for_window [title="Quick Format Citation"] floating enable
 for_window [workspace="10: float"] floating enable
 
 # move workspace to output left/right
