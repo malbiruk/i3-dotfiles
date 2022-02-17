@@ -4,7 +4,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Features
 
-- toggle i3bar (nvisible/show)
+- toggle i3bar (invisible/show)
 - configure inner and outer gaps via shortcuts
 - toggle gaps
 - fullscreen rofi with shadow and blur
@@ -19,6 +19,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 - nice colors, shadows, transitions
 - pretty dunst notifications
 - usable zsh and vim configs
+- gnome-keyring set up
 
 ## Appearance
 
