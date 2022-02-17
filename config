@@ -140,9 +140,22 @@ bindsym $mod+Control+8 move container to workspace $8; workspace $8
 bindsym $mod+Control+9 move container to workspace $9; workspace $9
 bindsym $mod+Control+0 move container to workspace $10; workspace $10
 
+# workspace default monitors
+workspace $workspace1 output eDP
+workspace $workspace2 output eDP
+workspace $workspace3 output eDP
+workspace $workspace4 output eDP
+workspace $workspace5 output eDP
+workspace $workspace6 output eDP
+workspace $workspace9 output eDP
+workspace $workspace10 output eDP
+
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
+
+# default workspace
+exec --no-startup-id i3-msg 'workspace $1'
 
 # window rules
 # assign [class="Google-chrome"] $1
@@ -170,11 +183,6 @@ for_window [window_role="toolbox"] floating enable
 for_window [window_role="page-info"] floating enable	
 for_window [window_role="webconsole"] floating enable
 for_window [workspace="10: float"] floating enable
-
-# exec_always --no-startup-id python3 /home/klim/.config/i3/float_ws.py
-
-# default workspace
-exec --no-startup-id i3-msg 'workspace $1'
 
 # move workspace to output left/right
 bindsym $mod+control+Left move workspace to output left
@@ -225,26 +233,19 @@ bindsym $mod+Shift+q exec /home/klim/.config/i3/logout_menu.sh
 # monitors control
 bindsym $mod+p exec lxrandr
 
-# screenshoter
+# screenshots
 bindsym Print exec scrot -e 'mv $f Pictures/Screenshots/'
 bindsym --release Shift+Print exec scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
 # touchpad config
-exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3 NaturalScrolling=1
-exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
+# exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3 NaturalScrolling=1
+# exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
-# right capslock as escape key
+# capslock as escape key
 exec_always "sleep 0.1 && setxkbmap -option caps:swapescape"
 
 # change layout
-# exec_always --no-startup-id setxkbmap -layout "us,ru" 
-# exec_always --no-startup-id setxkbmap -option "grp:shifts_toggle"
 exec_always "setxkbmap -model pc105 -layout us,ru -option grp:shifts_toggle"
-
-# settings
-# touchpad config
-exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3
-exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+ unmute"
@@ -268,7 +269,7 @@ exec --no-startup-id xfce4-power-manager
 exec_always xrdb -merge ~/.Xresources
 
 # font
-font pango:Hack 6
+font pango: Hack 6
 
 # thin borders
 new_window pixel 2
@@ -298,12 +299,10 @@ client.urgent           $cyan               $cyan               $black          
 
 # i3bar configuration
 bar {
-        mode invisible
-        binding_mode_indicator no
+        mode dock
         i3bar_command i3bar -t
         status_command i3blocks -c /home/klim/.config/i3/i3blocks.conf
-        separator_symbol "|"
-        font pango: Hack 9
+        font pango: Noto Sans Medium 8
         position top
         colors {
                 background $trans
@@ -339,7 +338,7 @@ exec_always --no-startup-id picom --experimental-backends --config /home/klim/.c
 # hide mouse pointer
 exec --no-startup-id xbanish
 
-# notifications
+# notifications hitory
 bindsym $mod+n exec dunstctl history-pop
 
 # autostart
