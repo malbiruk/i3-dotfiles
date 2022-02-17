@@ -34,7 +34,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Some screenshots
 
-Floating workspace showing i3bar and notification
+Clean
 ![clean](clean.png)
 
 Chrome, Nautilus, pfetch
