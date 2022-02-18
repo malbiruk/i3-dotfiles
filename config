@@ -225,7 +225,7 @@ bindsym $mod+p exec lxrandr
 
 # screenshots
 bindsym Print exec scrot -e 'mv $f Pictures/Screenshots/'
-bindsym --release Shift+Print exec scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+bindsym --release Shift+Print exec /home/klim/.config/i3/scrot.sh
 
 # touchpad config
 # exec --no-startup-id synclient VertScrollDelta=20 HorizScrollDelta=40 HorizTwoFingerScroll=1 VertEdgeScroll=0 AccelFactor=0.089 VertScrollDelta=-113 TapButton1=1 TapButton2=3 NaturalScrolling=1
