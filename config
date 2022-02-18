@@ -162,6 +162,7 @@ assign [class="Gimp"] $9
 
 # floating rules
 for_window [instance="Toplevel"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [workspace="10: float"] floating enable
 
 # move workspace to output left/right
