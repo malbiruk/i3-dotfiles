@@ -163,4 +163,4 @@ map Ю >
 nnoremap H :noh<CR>
 
 " ctrl+i to insert single character in normal mode
-nnoremap <C-i> i_<Esc>r
+nnoremap <C-i> i <Esc>r

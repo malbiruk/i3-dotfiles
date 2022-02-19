@@ -223,7 +223,7 @@ bindsym --release Shift+Print exec /home/klim/.config/i3/scrot.sh
 # exec --no-startup-id syndaemon -i 0.5 -t -K -R #disable touchpad while typing
 
 # capslock as escape key
-exec_always "sleep 0.1 && setxkbmap -option caps:swapescape"
+exec_always "sleep 0.01 && setxkbmap -option caps:swapescape"
 
 # change layout
 exec_always "setxkbmap -model pc105 -layout us,ru -option grp:shifts_toggle"
@@ -323,6 +323,6 @@ exec --no-startup-id xbanish
 bindsym $mod+n exec dunstctl history-pop
 
 # autostart
-exec sleep 0.1 && /home/klim/.config/i3/rofi.sh
+exec sleep 0.01 && /home/klim/.config/i3/rofi.sh
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 exec --no-startup-id numlockx
