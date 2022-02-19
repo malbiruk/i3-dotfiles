@@ -30,7 +30,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Dependencies
 
-`i3-gaps picom rofi amixer light i3blocks i3-ipc oh-my-zsh urxvt slock jq numlockx xkb-switch`
+`i3-gaps picom rofi amixer light i3blocks i3-ipc oh-my-zsh urxvt slock jq numlockx xkb-switch scrot slop`
 
 ## Some screenshots
 

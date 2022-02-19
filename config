@@ -158,7 +158,7 @@ for_window [class="libreoffice"] move to workspace $6
 for_window [class="Spotify"] move to workspace $7
 assign [class="REAPER"] $7
 assign [class="vlc"] $8
-assign [class="Gimp"] $9
+# assign [class="Gimp"] $9
 
 # floating rules
 for_window [instance="Toplevel"] floating enable
