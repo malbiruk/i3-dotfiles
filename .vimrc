@@ -88,7 +88,7 @@ if filereadable(expand("~/.vimrc.plug"))
      source ~/.vimrc.plug
  endif
 
-inoremap jj <ESC><CR>
+" delete buffer
 command Bd bp\|bd \#
 
 " Cyrillic
@@ -160,4 +160,7 @@ map Б <
 map Ю >
 
 " disable search highlights
-nnoremap H :set invhlsearch<CR>
+nnoremap H :noh<CR>
+
+" ctrl+i to insert single character in normal mode
+nnoremap <C-i> i_<Esc>r
