@@ -6,12 +6,15 @@ if [ $res = "logout" ]; then
     i3-msg exit
 fi
 if [ $res = "suspend" ]; then
-    slock & systemctl suspend
+    slock & systemctl suspend & sudo zzz
 fi
 if [ $res = "restart" ]; then
-    systemctl reboot
+    systemctl reboot & sudo reboot
 fi
 if [ $res = "shutdown" ]; then
-    systemctl poweroff
+    systemctl poweroff & sudo poweroff
+fi
+if [ $res = "hibernation" ]; then
+    sudo ZZZ
 fi
 exit 0
