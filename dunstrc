@@ -1,5 +1,5 @@
 [global]
-    font = Hack 10
+    font = Noto Sans 11
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -72,7 +72,7 @@
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    idle_threshold = 20
+    idle_threshold = 5
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -91,7 +91,7 @@
 
     # should a notification popped up from history be sticky or
     # timeout as if it would normally do.
-    sticky_history = yes
+    sticky_history = no
 
     # Display indicators for URLs (U) and actions (A)
     show_indicators = yes
@@ -118,6 +118,7 @@
     #  * frame: use the same color as the frame.
     #  * anything else will be interpreted as a X color
     separator_color = auto
+    max_icon_size = 70
 
     # print a notification on startup
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -130,9 +131,8 @@
     # browser for opening urls in context menu
     browser = /usr/bin/google-chrome -new-tab
 
-[frame]
-    width = 1
-    color = "#2d2d2d"
+    frame_width = 1
+    frame_color = "#2d2d2d"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
