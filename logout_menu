@@ -1,5 +1,5 @@
 suspend
 logout
 restart
-hibernation
+hibernate
 shutdown

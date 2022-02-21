@@ -324,8 +324,10 @@ exec_always --no-startup-id picom --experimental-backends --config /home/klim/.c
 # hide mouse pointer
 exec --no-startup-id xbanish
 
-# notifications hitory
+# notifications 
 bindsym $mod+n exec dunstctl history-pop
+bindsym Ctrl+space exec dunctl close
+bindsym Ctrl+Shift+space exec dunctl close-all
 
 # autostart
 exec pulseaudio --start

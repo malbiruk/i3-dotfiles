@@ -14,7 +14,7 @@ fi
 if [ $res = "shutdown" ]; then
     systemctl poweroff & sudo poweroff
 fi
-if [ $res = "hibernation" ]; then
-    sudo ZZZ
+if [ $res = "hibernate" ]; then
+    slock & sudo ZZZ
 fi
 exit 0
