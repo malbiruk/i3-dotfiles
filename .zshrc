@@ -15,6 +15,8 @@ fpath+=$HOME/.zsh/pure
 # .zshrc
 autoload -U promptinit; promptinit
 
+export TERM=xterm-256color
+
 # change the path color
 # zstyle :prompt:pure:path color blue
 
@@ -118,8 +120,11 @@ alias mic='alsa_in -d hw:C1U -c 1 -r 44100 -p 512 -n 2'
 alias restart_alsa='pulseaudio -k && sudo alsa force-reload'
 alias rm='rm -i'
 alias jpserv='ssh -N -f -L localhost:8889:localhost:8889 -p 17222 klim@nmr63.nmr.ru'
-
-bindkey "^[^[[D" backward-word
-bindkey "^[^[[C" forward-word
-
-export TERM=xterm-256color
+alias n='nautilus .'
+alias halt="sudo halt"
+alias poweroff="sudo poweroff"
+alias reboot="sudo reboot"
+alias shutdown="sudo shutdown"
+alias zzz="sudo zzz"
+alias ZZZ="sudo ZZZ"
+alias pfetch='clear && PF_ALIGN="" PF_COL3=3 PF_COL1=5 PF_INFO="title ascii os host kernel uptime pkgs memory wm palette" pfetch'
