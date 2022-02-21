@@ -39,6 +39,7 @@ rofi.lines: 5
 rofi.hide-scrollbar: true
 rofi.terminal: urxvt
 
+
 /*###############
 # URXVT settings
 ###############*/
