@@ -153,16 +153,15 @@ exec --no-startup-id i3-msg 'workspace $1'
 
 # window rules
 # assign [class="Google-chrome"] $1
-# assign [class="Telegram"] $2
-# assign [class="Slack"] $2
-# assign [class="Atom"] $4
-# assign [class="Evince"] $5
-# assign [class="Zathura"] $5
-# for_window [class="libreoffice"] move to workspace $6
-# for_window [class="Spotify"] move to workspace $7
-# assign [class="REAPER"] $7
-# assign [class="vlc"] $8
-# assign [class="Gimp"] $9
+assign [class="Telegram"] $2
+assign [class="Slack"] $2
+assign [class="Atom"] $4
+assign [class="Zotero"] $5
+assign [class="Zathura"] $5
+for_window [class="libreoffice"] move to workspace $6
+for_window [class="Spotify"] move to workspace $7
+assign [class="REAPER"] $7
+assign [class="vlc"] $8
 
 # floating rules
 for_window [instance="Toplevel"] floating enable
