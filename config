@@ -92,6 +92,10 @@ bindsym $mod+F10 [con_mark="10"] focus
 bindsym $mod+F11 [con_mark="11"] focus
 bindsym $mod+F12 [con_mark="12"] focus
 
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # worspace names
 set $1 1: www
 set $2 2: mes
@@ -157,7 +161,9 @@ assign [class="Telegram"] $2
 assign [class="Slack"] $2
 assign [class="Atom"] $4
 assign [instance="Navigator"] $5
-assign [class="Zathura"] $5
+# assign [class="Zathura"] $5
+assign [instance="docs.google.com"] $6
+assign [instance="www.figma.com"] $6
 for_window [class="libreoffice"] move to workspace $6
 for_window [class="Spotify"] move to workspace $7
 assign [class="REAPER"] $7
