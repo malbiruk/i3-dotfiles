@@ -6,8 +6,8 @@
     text-color:                  #888888;
     black:                       #000000;
     white:                       #ffffff;
-    red:                         #f2777a; 
-    cyan:                        #66cccc; 
+    red:                         #bf616a; 
+    cyan:                        #96b6b4; 
 
     selected-normal-foreground:  @white;
     normal-foreground:           @text-color;

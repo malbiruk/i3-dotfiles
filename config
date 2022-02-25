@@ -265,7 +265,7 @@ exec --no-startup-id xfce4-power-manager
 exec_always xrdb -merge ~/.Xresources
 
 # font
-font pango: Hack 6
+font pango: MesloLGL Nerd Font 6
 
 # thin borders
 new_window pixel 2
@@ -276,22 +276,18 @@ hide_edge_borders smart
 
 # colors
 set $trans  #00000000
-set $black  #2d2d2d
-set $grey   #666666
-set $white  #cccccc
-set $red    #f2777a
-set $blue   #6699cc
-set $cyan   #66cccc
-set $yellow #ffcc66
-set $green  #99cc99
-set $magenta #cc99cc
+set $black  #2b303b
+set $white  #c0c5ce
+set $blue   #8fa1b3
+set $cyan   #96b5b4
+set $magenta #b48ead
 
 # window colors
 #                       border              background         text             indicator
-client.focused          $yellow             $yellow              $black              $green
-client.unfocused        $black              $black             $white            $green
-client.focused_inactive $black              $black             $white            $green
-client.urgent           $cyan               $cyan               $black           $green
+client.focused          $magenta             $magenta              $black              $blue
+client.unfocused        $black              $black             $white            $blue
+client.focused_inactive $black              $black             $white            $blue
+client.urgent           $cyan               $cyan               $black           $blue
 
 # i3bar configuration
 bar {
