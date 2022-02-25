@@ -1,9 +1,0 @@
-call plug#begin('~/.vim/plugged')
-
-Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
-Plug 'tmsvg/pear-tree'
-Plug 'ervandew/supertab'
-Plug 'preservim/nerdtree'
-
-call plug#end()
