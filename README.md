@@ -37,9 +37,6 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 Files, screenfetch, notification
 ![clean](clean.png)
 
-Chrome, Nautilus, pfetch
-![pfetch](fetch.png)
-
 Atom, vim
 ![text editors](txt.png)
 
