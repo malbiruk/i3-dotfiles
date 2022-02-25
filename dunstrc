@@ -132,7 +132,7 @@
     browser = /usr/bin/google-chrome -new-tab
 
     frame_width = 1
-    frame_color = "#2d2d2d"
+    frame_color = "#2b303b"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -156,18 +156,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#2d2d2d"
-    foreground = "#cccccc"
+    background = "#2b303b"
+    foreground = "#c0c5ce"
     timeout = 10
 
 [urgency_normal]
-    background = "#2d2d2d"
-    foreground = "#cccccc"
+    background = "#2b303b"
+    foreground = "#c0c5ce"
     timeout = 10
 
 [urgency_critical]
-    background = "#66cccc"
-    foreground = "#2d2d2d"
+    background = "#96b5b4"
+    foreground = "#2b303b"
     timeout = 0
 
 
