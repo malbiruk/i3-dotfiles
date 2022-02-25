@@ -14,12 +14,12 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 - floating workspace (10)
 - some automatic windows placement on workspaces
 - window markers using win+shift+F{number}
+- scratchpad
 - capslock switches escape
 - configured media buttons
 - nice colors, shadows, transitions
 - pretty dunst notifications
 - usable zsh and vim configs
-- gnome-keyring set up
 
 ## Appearance
 
@@ -34,7 +34,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Some screenshots
 
-Clean
+Files, screenfetch, notification
 ![clean](clean.png)
 
 Chrome, Nautilus, pfetch
