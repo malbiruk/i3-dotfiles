@@ -45,6 +45,3 @@ Atom, vim
 
 rofi
 ![rofi](rofi.png)
-
-#cb99cc
-![wallpaper](wallpaper.jpg)
