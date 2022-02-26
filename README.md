@@ -7,6 +7,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 - toggle i3bar (invisible/show)
 - configure inner and outer gaps via shortcuts
 - toggle gaps
+- script to toggle GTK theme between two
 - fullscreen rofi with shadow and blur
 - rofi includes file finder
 - logout menu using rofi
@@ -23,7 +24,7 @@ Most of scripts and many config parts I've just found on the internet 👉👈
 
 ## Appearance
 
-**GTK-Theme:** Orchis light compact <br>
+**GTK-Theme:** Orchis light compact / Nordic darker <br>
 **Icons:** Zafiro icons Dark <br>
 **Font:** Meslo <br>
 **Colorscheme:** Ocean

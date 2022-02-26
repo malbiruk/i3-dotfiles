@@ -211,7 +211,7 @@ bindsym $mod+r mode "resize"
 
 # terminal
 bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+Return exec python3 /home/klim/.config/i3/urxvt_float.py 
+bindsym $mod+Shift+Return exec python3 /home/klim/.config/i3/urxvt_float.py
 
 # applications
 bindsym $mod+d exec /home/klim/.config/i3/rofi.sh
@@ -318,8 +318,10 @@ bindsym $mod+g gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
 bindsym $mod+x gaps outer current plus 6
 bindsym $mod+shift+x gaps outer current minus 6
-bindsym $mod+control+g exec --no-startup-id exec /home/klim/.config/i3/toggle_gaps.sh toggle 
-# i3-msg gaps inner current set 0 && i3-msg gaps outer current set 0
+bindsym $mod+control+g exec --no-startup-id /home/klim/.config/i3/toggle_gaps.sh toggle
+
+# gtk
+bindsym $mod+shift+n exec --no-startup-id /home/klim/.config/i3/gtk-switch.py
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
@@ -330,7 +332,7 @@ exec_always --no-startup-id picom --experimental-backends --config /home/klim/.c
 # hide mouse pointer
 exec --no-startup-id xbanish
 
-# notifications 
+# notifications
 bindsym $mod+n exec dunstctl history-pop
 bindsym Ctrl+space exec dunctl close
 bindsym Ctrl+Shift+space exec dunctl close-all
@@ -341,3 +343,4 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secr
 exec --no-startup-id numlockx
 exec --no-startup-id xset dpms 600
 exec --no-startup-id xautolock -time 10 -locker i3lock
+exec_always --no-startup-id /home/klim/.config/i3/auto_gtk.sh
