@@ -18,6 +18,8 @@ def obtain_arguments():
                         help='specify dark theme')
     parser.add_argument('--apply', choices=['tl', 'td'],
                         help='don\'t toggle between themes, just apply one of them')
+    parser.add_argument('--notify', action='store_true',
+                        help='turn on notifications')
     parser.add_argument('-p', '--path', help='path to config file',
                         default='/home/klim/.config/gtk-3.0/settings.ini')
 
@@ -37,23 +39,24 @@ def find_current_theme(gtkpath):
     return theme_current
 
 
-def change_theme_to(theme, gtkpath):
+def change_theme_to(theme, gtkpath, notify=False):
     f = read_file(gtkpath)
     gtk_theme_name = f[2].split('=')[0]
     changed_gtk_line = ['='.join([gtk_theme_name, theme])]
     f_updated = f[:2] + changed_gtk_line + f[3:]
     with open(gtkpath, 'w') as f:
         f.write('\n'.join(f_updated))
-    os.popen(
-        f'notify-send "GTK theme was switched to {theme}\n'
-        'Applications need to be restarted for changes to take place"')
+    if notify:
+        os.popen(
+            f'notify-send "GTK theme was switched to {theme}\n'
+            'Applications need to be restarted for changes to take place"')
 
 
-def swap_themes(theme_current, theme_1, theme_2, gtkpath):
+def swap_themes(theme_current, theme_1, theme_2, gtkpath, notify=False):
     if theme_current == theme_1:
-        change_theme_to(theme_2, gtkpath)
+        change_theme_to(theme_2, gtkpath, notify)
     elif theme_current == theme_2:
-        change_theme_to(theme_1, gtkpath)
+        change_theme_to(theme_1, gtkpath, notify)
     else:
         raise ValueError('current theme is not specified, cannot toggle')
 
@@ -62,10 +65,11 @@ def main():
     args = obtain_arguments()
     if args.apply == None:
         theme_current = find_current_theme(args.path)
-        swap_themes(theme_current, args.theme_1, args.theme_2, args.path)
+        swap_themes(theme_current, args.theme_1,
+                    args.theme_2, args.path, args.notify)
     else:
         apply_theme = args.theme_1 if args.apply == 'tl' else args.theme_2
-        change_theme_to(apply_theme, args.path)
+        change_theme_to(apply_theme, args.path, args.notify)
 
 
 if __name__ == '__main__':

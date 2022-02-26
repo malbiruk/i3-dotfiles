@@ -320,8 +320,8 @@ bindsym $mod+x gaps outer current plus 6
 bindsym $mod+shift+x gaps outer current minus 6
 bindsym $mod+control+g exec --no-startup-id /home/klim/.config/i3/toggle_gaps.sh toggle
 
-# gtk
-bindsym $mod+shift+n exec --no-startup-id /home/klim/.config/i3/gtk-switch.py
+# switch gtk theme
+bindsym $mod+shift+n exec --no-startup-id /home/klim/.config/i3/gtk-switch.py --notify
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
