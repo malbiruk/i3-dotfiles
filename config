@@ -93,8 +93,8 @@ bindsym $mod+F11 [con_mark="11"] focus
 bindsym $mod+F12 [con_mark="12"] focus
 
 # scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+tab move scratchpad
+bindsym $mod+tab scratchpad show
 
 # worspace names
 set $1 1: www
@@ -119,8 +119,8 @@ bindsym $mod+7 workspace $7
 bindsym $mod+8 workspace $8
 bindsym $mod+9 workspace $9
 bindsym $mod+0 workspace $10
-bindsym Mod1+Tab workspace next
-bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+equal workspace next
+bindsym $mod+minus workspace prev
 
 # move focused container to workspace
 bindsym $mod+Control+1 move container to workspace $1
@@ -145,8 +145,8 @@ bindsym $mod+Shift+7 move container to workspace $7; workspace $7
 bindsym $mod+Shift+8 move container to workspace $8; workspace $8
 bindsym $mod+Shift+9 move container to workspace $9; workspace $9
 bindsym $mod+Shift+0 move container to workspace $10; workspace $10
-bindsym $mod+Tab move container to workspace next; workspace next
-bindsym $mod+Shift+Tab move container to workspace prev; workspace prev
+bindsym $mod+Shift+equal move container to workspace next; workspace next
+bindsym $mod+Shift+minus move container to workspace prev; workspace prev
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
@@ -159,6 +159,7 @@ exec --no-startup-id i3-msg 'workspace $1'
 # assign [class="Google-chrome"] $1
 assign [class="Telegram"] $2
 assign [class="Slack"] $2
+assign [class="zoom"] $2
 assign [class="Atom"] $4
 assign [instance="Navigator"] $5
 # assign [class="Zathura"] $5
@@ -175,6 +176,7 @@ for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="File-roller"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [workspace="10: float"] floating enable
+for_window [workspace="2: mes"] floating enable
 
 # move workspace to output left/right
 bindsym $mod+control+Left move workspace to output left
