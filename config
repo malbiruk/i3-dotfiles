@@ -323,7 +323,7 @@ bindsym $mod+shift+x gaps outer current minus 6
 bindsym $mod+control+g exec --no-startup-id /home/klim/.config/i3/toggle_gaps.sh toggle
 
 # switch gtk theme
-bindsym $mod+shift+n exec --no-startup-id /home/klim/.config/i3/gtk-switch.py --notify
+bindsym $mod+n exec --no-startup-id /home/klim/.config/i3/gtk-switch.py --notify
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/klim/Pictures/wallpaper.jpg
@@ -335,9 +335,10 @@ exec_always --no-startup-id picom --experimental-backends --config /home/klim/.c
 exec --no-startup-id xbanish
 
 # notifications
-bindsym $mod+n exec dunstctl history-pop
-bindsym Ctrl+space exec dunctl close
-bindsym Ctrl+Shift+space exec dunctl close-all
+bindsym Control+grave exec dunstctl history-pop
+bindsym Control+space exec dunstctl close
+bindsym Control+Shift+space exec dunstctl close-all
+bindsym Control+Shift+grave exec dunstctl context
 
 # autostart
 exec pulseaudio --start

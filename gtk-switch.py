@@ -23,8 +23,7 @@ def obtain_arguments():
     parser.add_argument('-p', '--path', help='path to config file',
                         default='/home/klim/.config/gtk-3.0/settings.ini')
 
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def read_file(filename):
@@ -35,8 +34,7 @@ def read_file(filename):
 
 def find_current_theme(gtkpath):
     f = read_file(gtkpath)
-    theme_current = f[2].split('=')[1]
-    return theme_current
+    return f[2].split('=')[1]
 
 
 def change_theme_to(theme, gtkpath, notify=False):
