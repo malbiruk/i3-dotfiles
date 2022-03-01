@@ -61,7 +61,7 @@ def swap_themes(theme_current, theme_1, theme_2, gtkpath, notify=False):
 
 def main():
     args = obtain_arguments()
-    if args.apply == None:
+    if args.apply is None:
         theme_current = find_current_theme(args.path)
         swap_themes(theme_current, args.theme_1,
                     args.theme_2, args.path, args.notify)
