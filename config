@@ -164,6 +164,9 @@ bindsym $mod+Shift+minus move container to workspace prev; workspace prev
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
+# workspace back-and-forth
+workspace_auto_back_and_forth yes
+
 # window rules
 # assign [class="Google-chrome"] $1
 assign [class="Telegram"] $2
@@ -174,8 +177,8 @@ assign [instance="Navigator"] $5
 # assign [class="Zathura"] $5
 assign [instance="docs.google.com"] $6
 assign [instance="www.figma.com"] $6
-for_window [class="libreoffice"] move to workspace $6
-for_window [class="Spotify"] move to workspace $7
+for_window [instance="libreoffice"] move --no-auto-back-and-forth to workspace $6
+# for_window [class="Spotify"] move to workspace $7
 assign [class="REAPER"] $7
 assign [class="vlc"] $8
 
