@@ -164,9 +164,6 @@ bindsym $mod+Shift+minus move container to workspace prev; workspace prev
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
-# back-and-forth switching
-workspace_auto_back_and_forth yes
-
 # window rules
 # assign [class="Google-chrome"] $1
 assign [class="Telegram"] $2
