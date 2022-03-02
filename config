@@ -21,7 +21,7 @@ floating_modifier $mod
 #     bindsym Escape mode default
 # }
 
-bindsym $mod+q mode kill
+bindsym $mod+q kill
 
 # focus new windows
 focus_on_window_activation focus
