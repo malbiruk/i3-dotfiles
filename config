@@ -12,17 +12,16 @@ bindsym $mod+i exec i3-input
 floating_modifier $mod
 
 # kill focused window
-set $close "Close the window? (y/n)"
+# set $close "Close the window? (y/n)"
+# mode $close {
+#     bindsym y kill, mode default
+#     bindsym Return kill, mode default
+# 
+#     bindsym n mode default
+#     bindsym Escape mode default
+# }
 
-mode $close {
-    bindsym y kill, mode default
-    bindsym Return kill, mode default
-
-    bindsym n mode default
-    bindsym Escape mode default
-}
-
-bindsym $mod+q mode $close
+bindsym $mod+q mode kill
 
 # focus new windows
 focus_on_window_activation focus
