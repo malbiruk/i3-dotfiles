@@ -173,7 +173,7 @@ assign [class="Telegram"] $2
 assign [class="Slack"] $2
 assign [class="zoom"] $2
 assign [class="Atom"] $4
-assign [instance="Navigator"] $5
+assign [class="Zotero" instance="Navigator"] $5
 # assign [class="Zathura"] $5
 assign [instance="docs.google.com"] $6
 assign [instance="www.figma.com"] $6
@@ -351,8 +351,8 @@ bindsym Control+Shift+grave exec dunstctl context
 exec pulseaudio --start
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
 exec --no-startup-id numlockx
-exec --no-startup-id xset dpms 600
-exec --no-startup-id xautolock -time 10 -locker slock
+# exec --no-startup-id xset dpms 600
+# exec --no-startup-id xautolock -time 10 -locker slock
 exec_always --no-startup-id /home/klim/.config/i3/auto_gtk.sh
 # tray
 exec_always --no-startup-id nm-applet

@@ -3,29 +3,6 @@
 import argparse
 import os
 
-
-def obtain_arguments():
-    parser = argparse.ArgumentParser(
-        description='toggle GTK themes between theme_1 and theme_2 '
-        'or just apply one of the themes if --apply is specified',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
-    parser.add_argument('-tl', dest='theme_1',
-                        default='Orchis-light-compact',
-                        help='specify light theme')
-    parser.add_argument('-td', dest='theme_2',
-                        default='Nordic-darker-standard-buttons-v40',
-                        help='specify dark theme')
-    parser.add_argument('--apply', choices=['tl', 'td'],
-                        help='don\'t toggle between themes, just apply one of them')
-    parser.add_argument('--notify', action='store_true',
-                        help='turn on notifications')
-    parser.add_argument('-p', '--path', help='path to config file',
-                        default='/home/klim/.config/gtk-3.0/settings.ini')
-
-    return parser.parse_args()
-
-
 def read_file(filename):
     with open(filename) as f:
         f = f.read().split('\n')
@@ -60,7 +37,26 @@ def swap_themes(theme_current, theme_1, theme_2, gtkpath, notify=False):
 
 
 def main():
-    args = obtain_arguments()
+    parser = argparse.ArgumentParser(
+        description='toggle GTK themes between theme_1 and theme_2 '
+        'or just apply one of the themes if --apply is specified',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+    parser.add_argument('-tl', dest='theme_1',
+                        default='Orchis-light-compact',
+                        help='specify light theme')
+    parser.add_argument('-td', dest='theme_2',
+                        default='Nordic-darker-standard-buttons-v40',
+                        help='specify dark theme')
+    parser.add_argument('--apply', choices=['tl', 'td'],
+                        help='don\'t toggle between themes, just apply one of them')
+    parser.add_argument('--notify', action='store_true',
+                        help='turn on notifications')
+    parser.add_argument('-p', '--path', help='path to config file',
+                        default='/home/klim/.config/gtk-3.0/settings.ini')
+
+    args = parser.parse_args()
+
     if args.apply is None:
         theme_current = find_current_theme(args.path)
         swap_themes(theme_current, args.theme_1,
