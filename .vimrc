@@ -1,5 +1,35 @@
-" Set compatibility to Vim only.
-set nocompatible
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+Plug 'tpope/vim-commentary',
+Plug 'jeetsukumaran/vim-pythonsense',
+Plug 'liuchengxu/vista.vim',
+Plug 'Vimjas/vim-python-pep8-indent',
+Plug 'vim-syntastic/syntastic',
+Plug 'https://github.com/rakr/vim-one',
+Plug 'preservim/nerdtree',
+Plug 'vim-airline/vim-airline',
+Plug 'https://github.com/tmsvg/pear-tree',
+Plug 'https://github.com/davidhalter/jedi-vim',
+Plug 'https://github.com/tell-k/vim-autopep8'
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
+
+colorscheme one
+set background=light
+let g:airline_theme='one'
 
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype on
@@ -23,10 +53,7 @@ set pastetoggle=<F2>
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
 " set textwidth=79
 set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set noshiftround
 
 " Display 5 lines above/below the cursor when scrolling with a mouse.
@@ -76,6 +103,9 @@ set ignorecase
 " Include only uppercase words with uppercase search term
 set smartcase
 
+set nu
+set cursorline
+
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
 
@@ -87,9 +117,6 @@ vnoremap <Space> zf
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 
-if filereadable(expand("~/.vimrc.plug"))
-     source ~/.vimrc.plug
- endif
 
 " delete buffer
 command Bd bp\|bd \#
@@ -167,3 +194,4 @@ nnoremap H :noh<CR>
 
 " ctrl+i to insert single character in normal mode
 nnoremap <C-i> i <Esc>r
+
