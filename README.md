@@ -2,10 +2,7 @@
 
 Configuration files for i3/sway window managers.
 
-## Branches
-- `ocean_mountain` - i3 ocean mountain theme (stable)
-- `sway-green-on-black` - Sway green/black theme (latest)
-- `master-legacy` - Original i3 config (archived)
+Different configs lay in their own branches. The most recent one using sway is `sway-green-on-black`, all other are for i3wm.
 
 ## Quick Start
 ```bash
