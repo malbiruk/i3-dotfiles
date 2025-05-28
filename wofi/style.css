@@ -1,0 +1,51 @@
+* {
+    font-family: Monaco Nerd Font;
+    color: #00ff00;
+    outline: none;
+    border: none;
+}
+
+#window {
+    background: #0a0c0e;
+    margin: auto;
+    padding: 10px;
+    /* border-radius: 20px; */
+    border: 2px solid #00ff00;
+}
+
+#input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0px;
+    border-radius: 0px;
+    background: #0a0c0e;
+}
+
+#outer-box {
+    padding: 20px;
+}
+
+#img {
+    margin-right: 6px;
+}
+
+#entry {
+    padding: 10px;
+    border-radius: 0px;
+}
+
+#entry:selected {
+    background-color: #00ff00;
+}
+
+#text:selected {
+    color: #0a0c0e;
+}
+
+#text {
+    margin: 2px;
+}
+
+#input:focus {
+    box-shadow: none;
+}

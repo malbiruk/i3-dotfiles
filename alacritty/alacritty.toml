@@ -1,0 +1,89 @@
+[keyboard]
+bindings = [
+    { action = "SpawnNewInstance", key = "Return", mods = "Super|Shift" },
+]
+
+[scrolling]
+history = 65535
+
+[font]
+size = 11
+
+[font.normal]
+family = "Monaco Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Monaco"
+style = "Bold"
+
+[font.italic]
+family = "Monaco"
+style = "Italic"
+
+[font.bold_italic]
+family = "Monaco"
+style = "Bold Italic"
+
+[font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+# Colors (Baitong)
+
+[colors.primary]
+background = '#0a0c0e'
+foreground = '#33ff33'
+
+[colors.cursor]
+text = '#112a2a'
+cursor = '#00ff00'
+
+[colors.vi_mode_cursor]
+text = '#112a2a'
+cursor = '#00ff00'
+
+[colors.search]
+matches = { foreground = '#000000', background = '#1AE642' }
+focused_match = { foreground = '#000000', background = '#ff00ff' }
+
+[colors.hints]
+start = { foreground = '#1d1f21', background = '#1AE642' }
+end = { foreground = '#1AE642', background = '#1d1f21' }
+
+[colors.line_indicator]
+foreground = '#33ff33'
+background = '#1d1f21'
+
+[colors.footer_bar]
+background = '#731d8b'
+foreground = '#ffffff'
+
+[colors.selection]
+text = '#112a2a'
+background = '#1AE642'
+
+# Normal colors
+[colors.normal]
+black = '#000000'
+red = '#f77272'
+green = '#33ff33'
+yellow = '#1AE642'
+blue = '#68FDFE'
+magenta = '#ff66ff'
+cyan = '#87CEFA'
+white = '#dbdbd9'
+
+# Bright colors
+[colors.bright]
+black = '#ffffff'
+red = '#f77272'
+green = '#33ff33'
+yellow = '#1AE642'
+blue = '#68FDFE'
+magenta = '#ff66ff'
+cyan = '#68FDFE'
+white = '#dbdbd9'
