@@ -1,0 +1,68 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-y": "workspace::CloseAllDocks",
+      "ctrl-k j": "workspace::ToggleBottomDock",
+      "ctrl-k b": "workspace::ToggleRightDock",
+      "ctrl-alt-v": "workspace::ToggleVimMode",
+      "alt-b": [
+        // create notebook code cell
+        "workspace::SendKeystrokes",
+        "enter # space % % enter ctrl-/"
+      ],
+      "alt-m": [
+        // create markdown cell
+        "workspace::SendKeystrokes",
+        "enter # space % % space [ m a r k d o w n ] enter"
+      ],
+      "alt-shift-enter": ["task::Spawn", { "task_name": "send to sardine" }],
+      "ctrl-shift-c": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-shift-e": "editor::ToggleEditPrediction",
+      "ctrl-shift-backspace": "repl::ClearOutputs",
+      "ctrl-alt-=": "pane::GoForward",
+      "ctrl-i": "assistant::InsertIntoEditor",
+      "alt-right": "editor::MoveToEndOfLine",
+      "alt-left": "editor::MoveToBeginningOfLine",
+      "ctrl-up": "editor::MoveToStartOfParagraph",
+      "ctrl-down": "editor::MoveToEndOfParagraph",
+      "ctrl-shift-up": "editor::SelectToStartOfParagraph",
+      "ctrl-shift-down": "editor::SelectToEndOfParagraph",
+      "alt-up": "editor::MoveToBeginning",
+      "alt-down": "editor::MoveToEnd",
+      "alt-u": "editor::MoveLineUp",
+      "alt-d": "editor::MoveLineDown",
+      // "alt-shift-enter": [
+      //   // send selected code block to terminal
+      //   "workspace::SendKeystrokes",
+      //   "ctrl-c ctrl-` ctrl-shift-v enter ctrl-` down alt-left"
+      // ],
+      "ctrl-alt-f": "editor::FoldSelectedRanges",
+      "alt-[": "copilot::PreviousSuggestion",
+      "alt-]": "copilot::NextSuggestion",
+      "alt-}": "editor::AcceptPartialCopilotSuggestion",
+      "alt-{": "copilot::Suggest"
+
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "ContextEditor > Editor",
+    "bindings": {
+      "ctrl-enter": "assistant::Assist",
+      "ctrl-n": "agent::NewTextThread"
+    }
+  }
+]

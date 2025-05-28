@@ -1,0 +1,27 @@
+{
+  // Each snippet must have a name and body, but the prefix and description are optional.
+  // The prefix is used to trigger the snippet, but when omitted then the name is used.
+  // Use placeholders like $1, $2 or ${1:defaultValue} to define tab stops.
+  // The $0 determines the final cursor position.
+  // Placeholders with the same value are linked.
+  "Main": {
+    "prefix": "ifmain",
+    "body": "if __name__ == \"__main__\":\n    ${1:main()}",
+    "description": "Run main function on script execution"
+  },
+  "Swim function": {
+    "prefix": "swim",
+    "body": "def ${1:name}(p=1, i=0):\n    ${2:D}(\"${3:pattern}\", i=i)\n    again(swim(${1:name}), p=${5:1}, i=i + 1)",
+    "description": "Create swim function"
+  },
+  "New code cell": {
+    "prefix": "cell",
+    "body": "# %%\n",
+    "description": "Create new Jupyter notebook code cell"
+  },
+  "New markdown cell": {
+    "prefix": "md",
+    "body": "# %% [markdown]\n# ",
+    "description": "Create new Jupyter notebook markdown cell"
+  }
+}

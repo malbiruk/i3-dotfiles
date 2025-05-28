@@ -1,0 +1,261 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+
+{
+  "edit_predictions": {
+    "mode": "eager",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": true
+  },
+  "auto_update": true,
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3.7-sonnet"
+    },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+    "version": "2",
+    "dock": "right"
+  },
+  "restore_on_startup": "last_workspace",
+  "project_panel": {
+    "auto_fold_dirs": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "tabs": {
+    "git_status": true,
+    "file_icons": true
+  },
+  "title_bar": {
+    "show_user_picture": false
+  },
+  "centered_layout": {
+    "left_padding": 0.08,
+    "right_padding": 0.08
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false
+  },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+      "delay_ms": 1000,
+      "min_column": 80
+    }
+  },
+  "vim_mode": false,
+  "relative_line_numbers": false,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "cursor_blink": true,
+  "buffer_font_family": "Monaco",
+  // "ui_font_family": "Roboto",
+  "ui_font_size": 14,
+  "buffer_font_size": 13.5,
+  "buffer_line_height": "comfortable",
+  "soft_wrap": "editor_width",
+  "wrap_guides": [100],
+  "show_wrap_guides": true,
+  "base_keymap": "Atom",
+  "theme": {
+    "mode": "dark",
+    "light": "Everforest Light Hard",
+    "dark": "ZedHacker Matrix"
+  },
+  "terminal": {
+    "dock": "right",
+    "blinking": "on",
+    "copy_on_select": true,
+    "detect_venv": {
+      "on": {
+        "directories": [".env", "env", ".venv", "venv"],
+        "activate_script": "default"
+      }
+    }
+  },
+  "auto_install_extensions": {
+    "ruff": true,
+    "toml": true
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/dist",
+    "**/.vscode"
+  ],
+  "remove_trailing_whitespace_on_save": true,
+  "always_treat_brackets_as_autoclosed": true,
+  "file_types": {
+    "Swift": ["scd"]
+  },
+  "languages": {
+    "Python": {
+      "language_servers": [
+        "pyright", // language server, import checks
+        "ruff" // linting and formatting
+      ],
+      "preferred_line_length": 100,
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": false
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    },
+    "Swift": {
+      "language_servers": ["!sourcekit-lsp"]
+    }
+  },
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python3"
+        },
+        "pyright": {
+          "disableLanguageServices": false
+        },
+        "python.analysis": {
+          "diagnosticMode": "openFilesOnly",
+          "typeCheckingMode": "off",
+          "diagnosticSeverityOverrides": {
+            "reportUnusedExpression": "none",
+            "reportCallIssue": "none",
+            "reportAttributeAccessIssue": "information",
+            "reportMissingImports": "warning",
+            "reportInvalidTypeForm": "none",
+            "reportUndefinedVariable": "none"
+          }
+        }
+      }
+    }
+  },
+  "ruff": {
+    "initialization_options": {
+      "settings": {
+        "exclude": ["**/tests/**"],
+        "path": "./pyproject.toml",
+        "lineLength": 100,
+        "targetVersion": "py312",
+        "lint": {
+          "select": ["ALL"],
+          "fixable": ["ALL"],
+          "ignore": [
+            // "PT", // pytest-related rules
+            "DTZ007", // Naive datetime.strptime -- without tz
+            // "ERA", // eradicate commented-out code detection
+            // "PD101", // Using series.nunique() for checking that a series is constant is inefficient
+            // "TD", // todo comments detection
+            // "T20", // flake8-print rules (print statements)
+            // "S", // flake8-bandit security rules
+            // "S101", // Use of assert detected
+            // "ANN", // flake8-annotations type annotation rules
+            "ANN401",
+            "D", // pydocstyle docstring rules
+            "E501", // line too long
+            // "INP", // flake8-no-pep420 rules (implicit namespace packages)
+            // "PLR2004", // Magic value used in comparison
+            "B905", // `zip()` without an explicit `strict=` parameter
+            "PLR0913", // Too many arguments to function call
+            "C408", // Unnecessary `dict` call (rewrite as a literal)
+            // "I001", // Import block is un-sorted or un-formatted
+            // "DTZ005", // datetime.datetime.now() called without a tz argument
+            // "PLW1510", // subprocess run without check
+            "PD901", // Avoid using the generic variable name df for DataFrames
+            "NPY002", // Replace legacy np.random.{method_name} call with np.random.Generator
+            "TRY003", // Avoid specifying long messages outside the exception class
+            // "TRY400", // Use logger.exception instead of logger.error
+            // "FLY002", // Consider {expression} instead of string join
+            // "PLE1142", // await should be used within an async function
+            "EXE001", // Shebang is present but file is not executable
+            "EM101", // Exception must not use a string literal, assign to variable first
+            "EM102", // Exception must not use an f-string literal, assign to variable first
+            "NPY201", // np.{existing} will be removed in NumPy 2.0. {migration_guide}
+            "BLE001" // Do not catch blind exception: `Exception`
+          ],
+          "severities": {
+            "PLE": "E", // pylint error rules
+            "I002": "E", // Missing required import for __all__ item
+            "F821": "E", // Undefined name
+            "F401": "I", // Unused import
+            "F841": "I", // Unused variable
+            "F541": "I", // f-string without any formatted values
+            "TID": "I", // flake8-tidy-imports rules
+            "PT": "I", // pytest-related rules
+            "PGH": "I", // pygrep-hooks rules
+            "PLW": "I", // pylint warning rules
+            "F": "I", // pyflakes rules
+            "RET": "I", // flake8-return rules
+            "E": "I", // pycodestyle error rules
+            "FAST": "I", // FastAPI-related rules
+            "PERF": "I", // performance-related rules
+            "NPY": "I", // NumPy-specific rules
+            "PLR": "I", // pylint refactor rules
+            "ARG": "I", // flake8-unused-arguments rules
+            "ASYNC": "I", // flake8-async rules
+            "TRY": "I", // tryceratops rules
+            "PLC": "I", // pylint convention rules
+            "PD": "I", // pandas-related rules
+            "FIX": "I", // fixme comments detection
+            "PTH": "I", // flake8-use-pathlib rules
+            "SIM": "I", // flake8-simplify rules
+            "RSE": "I", // flake8-raise rules
+            "Q": "I", // flake8-quotes rules
+            "PIE": "I", // flake8-pie rules
+            "ICN": "I", // flake8-import-conventions rules
+            "EXE": "I", // flake8-executable rules
+            "C4": "I", // flake8-comprehensions rules
+            "B": "I", // flake8-bugbear rules
+            "UP": "I", // pyupgrade rules
+            "N": "I", // pep8-naming rules
+            "COM": "I", // flake8-commas rules
+            "RUF": "I", // Ruff-specific rules
+            "W": "I", // pycodestyle warning rules
+            "C": "I", // flake8-comprehensions and mccabe rules
+            "FLY": "I", // flynt rules
+            "PYI": "I" // flake8-pyi rules for .pyi files
+          }
+        }
+      }
+    }
+  }
+}
