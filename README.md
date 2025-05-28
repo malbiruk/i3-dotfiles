@@ -1,4 +1,13 @@
-# i3-dotfiles
-My i3 setup
-![neofetch](neofetch-2017-08-23-08-04-25-27701.png)
-![rofi](2017-08-23-200616_1366x768_scrot.png)
+# Window Manager Dotfiles
+
+Configuration files for i3/sway window managers.
+
+## Branches
+- `ocean_mountain` - i3 ocean mountain theme (stable)
+- `sway-green-on-black` - Sway green/black theme (latest)
+- `master-legacy` - Original i3 config (archived)
+
+## Quick Start
+```bash
+git clone -b sway-green-on-black https://github.com/user/i3-dotfiles
+```
