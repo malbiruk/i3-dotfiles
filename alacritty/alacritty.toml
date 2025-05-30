@@ -1,7 +1,8 @@
 [keyboard]
-bindings = [
-    { action = "SpawnNewInstance", key = "Return", mods = "Super|Shift" },
-]
+bindings = [{ action = "SpawnNewInstance", key = "Return", mods = "Super|Alt" }]
+
+[selection]
+save_to_clipboard = true
 
 [scrolling]
 history = 65535

@@ -86,6 +86,45 @@ get_network() {
     fi
 }
 
+get_bluetooth() {
+    # Check if bluetooth service is available
+    if ! command -v bluetoothctl >/dev/null 2>&1; then
+        return
+    fi
+
+    # Check if bluetooth adapter is powered on
+    powered=$(bluetoothctl show 2>/dev/null | grep "Powered:" | awk '{print $2}')
+
+    if [ "$powered" != "yes" ]; then
+        echo "󰂲 (off)"  # nf-md-bluetooth_off
+        return
+    fi
+
+    # Get connected devices
+    connected_devices=$(bluetoothctl devices Connected 2>/dev/null)
+
+    if [ -z "$connected_devices" ]; then
+        # Bluetooth is on but no devices connected
+        echo "󰂯 (on)"  # nf-md-bluetooth
+    else
+        # Count connected devices
+        device_count=$(echo "$connected_devices" | wc -l)
+
+        # Get first connected device name (truncated)
+        first_device=$(echo "$connected_devices" | head -1 | sed 's/Device [0-9A-F:]\+ //')
+
+        if [ ${#first_device} -gt 15 ]; then
+            first_device="${first_device:0:15}..."
+        fi
+
+        if [ "$device_count" -eq 1 ]; then
+            echo "󰂱 ${first_device} (1)"  # nf-md-bluetooth_connect with device count
+        else
+            echo "󰂱 ${first_device} (${device_count})"  # nf-md-bluetooth_connect with device count
+        fi
+    fi
+}
+
 get_volume() {
     # Try pipewire/pulseaudio first, then ALSA
     if command -v wpctl >/dev/null 2>&1; then
@@ -113,6 +152,54 @@ get_volume() {
             vol_icon="󰖁"  # nf-md-volume_off
         fi
         echo "${vol_icon} ${vol}%"
+    fi
+}
+
+get_brightness() {
+    # Try light first, then brightnessctl, then fallback to reading sysfs directly
+    if command -v light >/dev/null 2>&1; then
+        brightness=$(light -G 2>/dev/null | cut -d'.' -f1)
+    elif command -v brightnessctl >/dev/null 2>&1; then
+        brightness=$(brightnessctl get 2>/dev/null)
+        max_brightness=$(brightnessctl max 2>/dev/null)
+        if [ -n "$brightness" ] && [ -n "$max_brightness" ] && [ "$max_brightness" -gt 0 ]; then
+            brightness=$((brightness * 100 / max_brightness))
+        else
+            brightness=""
+        fi
+    else
+        # Fallback to reading sysfs directly
+        backlight_device=""
+        for device in /sys/class/backlight/*; do
+            if [ -d "$device" ]; then
+                backlight_device="$device"
+                break
+            fi
+        done
+
+        if [ -n "$backlight_device" ] && [ -f "$backlight_device/brightness" ] && [ -f "$backlight_device/max_brightness" ]; then
+            current=$(cat "$backlight_device/brightness" 2>/dev/null)
+            max=$(cat "$backlight_device/max_brightness" 2>/dev/null)
+            if [ -n "$current" ] && [ -n "$max" ] && [ "$max" -gt 0 ]; then
+                brightness=$((current * 100 / max))
+            fi
+        fi
+    fi
+
+    if [ -n "$brightness" ]; then
+        # Choose brightness icon based on level
+        if [ "$brightness" -gt 75 ]; then
+            brightness_icon="󰃠"  # nf-md-brightness_7
+        elif [ "$brightness" -gt 50 ]; then
+            brightness_icon="󰃟"  # nf-md-brightness_6
+        elif [ "$brightness" -gt 25 ]; then
+            brightness_icon="󰃞"  # nf-md-brightness_5
+        elif [ "$brightness" -gt 0 ]; then
+            brightness_icon="󰃝"  # nf-md-brightness_4
+        else
+            brightness_icon="󰃚"  # nf-md-brightness_1
+        fi
+        echo "${brightness_icon} ${brightness}%"
     fi
 }
 
@@ -222,8 +309,8 @@ get_date_time() {
 while true; do
     # Get window title (truncate if too long)
     window_title=$(get_window_title)
-    if [ ${#window_title} -gt 100 ]; then
-        window_title="${window_title:0:100}..."
+    if [ ${#window_title} -gt 90 ]; then
+        window_title="${window_title:0:90}..."
     fi
 
     # Build status string
@@ -237,7 +324,13 @@ while true; do
     status="${status}$(get_memory_usage) | "
     status="${status}$(get_disk_usage) | "
     status="${status}$(get_network) | "
+    bluetooth=$(get_bluetooth)
+    [ -n "$bluetooth" ] && status="${status}${bluetooth} | "
     status="${status}$(get_volume) | "
+
+    # Add brightness if available
+    brightness=$(get_brightness)
+    [ -n "$brightness" ] && status="${status}${brightness} | "
 
     # Add battery if available
     battery=$(get_battery)

@@ -14,17 +14,13 @@
       "proxy": null,
       "proxy_no_verify": null
     },
-    "enabled_in_text_threads": true
+    "enabled_in_assistant": true
   },
   "auto_update": true,
-  "agent": {
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
-    },
+  "assistant": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "claude-3.7-sonnet"
     },
     "version": "2",
     "dock": "right"
@@ -36,17 +32,11 @@
   "collaboration_panel": {
     "button": false
   },
-  "notification_panel": {
-    "button": false
-  },
-  "inline_code_actions": false,
   "tabs": {
     "git_status": true,
     "file_icons": true
   },
-  "title_bar": {
-    "show_user_picture": false
-  },
+  "show_user_picture": false,
   "centered_layout": {
     "left_padding": 0.08,
     "right_padding": 0.08
@@ -55,7 +45,7 @@
     "edit_prediction_provider": "copilot"
   },
   "telemetry": {
-    "diagnostics": true,
+    "diagnostics": false,
     "metrics": false
   },
   "inlay_hints": {
@@ -63,7 +53,7 @@
   },
   "git": {
     "inline_blame": {
-      "enabled": false,
+      "enabled": true,
       "delay_ms": 1000,
       "min_column": 80
     }
@@ -75,7 +65,6 @@
   },
   "cursor_blink": true,
   "buffer_font_family": "Monaco",
-  // "ui_font_family": "Roboto",
   "ui_font_size": 14,
   "buffer_font_size": 13.5,
   "buffer_line_height": "comfortable",
@@ -86,7 +75,7 @@
   "theme": {
     "mode": "dark",
     "light": "Everforest Light Hard",
-    "dark": "ZedHacker Matrix"
+    "dark": "Everforest Dark Hard"
   },
   "terminal": {
     "dock": "right",
@@ -117,9 +106,6 @@
   ],
   "remove_trailing_whitespace_on_save": true,
   "always_treat_brackets_as_autoclosed": true,
-  "file_types": {
-    "Swift": ["scd"]
-  },
   "languages": {
     "Python": {
       "language_servers": [
@@ -141,17 +127,11 @@
           }
         }
       ]
-    },
-    "Swift": {
-      "language_servers": ["!sourcekit-lsp"]
     }
   },
   "lsp": {
     "pyright": {
       "settings": {
-        "python": {
-          "pythonPath": ".venv/bin/python3"
-        },
         "pyright": {
           "disableLanguageServices": false
         },

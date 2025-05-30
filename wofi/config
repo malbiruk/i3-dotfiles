@@ -14,5 +14,5 @@ location=center
 key_expand=Tab
 insensitive=true
 matching=fuzzy
-mode=drun,run
+mode=drun
 no_actions=true

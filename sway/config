@@ -69,7 +69,7 @@ exec swayidle -w \
 
     input type:keyboard {
         xkb_layout us,ru
-        xkb_options grp:alt_shift_toggle
+        xkb_options grp:shifts_toggle
     }
 #
 # You can also configure each device individually.
@@ -88,7 +88,7 @@ exec swayidle -w \
 
     # Launchers
     bindsym $mod+d $menu
-    # bindsym $mod+Shift+d exec wofi -S run
+    bindsym $mod+Shift+d exec wofi -S run
     bindsym $mod+Shift+w $window_search
     bindsym $mod+Shift+f exec find . -type f -not -path '*/.*' -printf '%T@ %p\n' 2>/dev/null | sort -nr | cut -d' ' -f2- | awk -F'/' '{print $(NF) " (" substr($0, 1, length($0)-length($(NF))-1) ")";}' | wofi -d -i -W "50%" | sed 's/.* (\(.*\))\/.*/\1/' | xargs -r xdg-open
     bindsym $mod+Shift+q exec /home/klim/.config/sway/scripts/logout_menu.sh
@@ -140,7 +140,7 @@ set $6 6
 set $7 7
 set $8 8
 set $9 9
-set $10 10
+set $10 0
 
 # switch to workspace
 bindsym $mod+1 workspace $1
@@ -181,6 +181,10 @@ bindsym $mod+Shift+9 move container to workspace $9; workspace $9
 bindsym $mod+Shift+0 move container to workspace $10; workspace $10
 bindsym $mod+Shift+equal move container to workspace next; workspace next
 bindsym $mod+Shift+minus move container to workspace prev; workspace prev
+
+# floating things
+for_window [workspace=$10] floating enable
+bindsym $mod+u [workspace=__focused__] floating toggle
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
@@ -249,10 +253,10 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym --locked XF86MonBrightnessDown exec light -U 5
+    bindsym --locked XF86MonBrightnessUp exec light -A 5
     # Special key to take a screenshot with grim
-    bindsym Print exec grim3
+    bindsym Print exec grim
 
 include /usr/local/etc/sway/config.d/*
 
@@ -272,17 +276,14 @@ default_border pixel 1
 
 # colors
 set $black  #0a0c0e
-set $grey   #888a85
 set $white  #00ff00
-set $red    #ba8700
-set $blue   #5a7e8c
-set $cyan   #7f99a6
+set $red    #ff6b6b
 
 # window colors
 #                       border          background     text             indicator
 client.focused          $white          $white         $black           $white
-client.unfocused        $black		    $black 	       $grey         	$white
-client.focused_inactive $black  	    $black 	       $grey	    	$white
+client.unfocused        $black		    $black 	       $white         	$white
+client.focused_inactive $black  	    $black 	       $white	    	$white
 client.urgent           $black    	    $black 	       $red             $white
 
 # swaybar configuration
@@ -295,8 +296,8 @@ bar {
                 separator  $black
                 statusline $white
         #                          border             background         text
-                focused_workspace  $black	      $black 		 $white
-                inactive_workspace $black             $black		 $grey
+                focused_workspace  $black	      $white 		 $black
+                inactive_workspace $black             $black		 $white
                 urgent_workspace   $black 	      $black             $red
         }
 }
@@ -312,11 +313,11 @@ bindsym $mod+x gaps outer current plus 6
 bindsym $mod+shift+x gaps outer current minus 6
 bindsym $mod+control+g exec --no-startup-id swaymsg gaps inner current set 0 && swaymsg gaps outer current set 0
 
-exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
 # Mako
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss -a
 
 # Start programs
 exec mako
+exec blueman-applet
+exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
