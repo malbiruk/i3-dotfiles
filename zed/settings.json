@@ -149,9 +149,6 @@
   "lsp": {
     "pyright": {
       "settings": {
-        "python": {
-          "pythonPath": ".venv/bin/python3"
-        },
         "pyright": {
           "disableLanguageServices": false
         },

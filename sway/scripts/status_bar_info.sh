@@ -1,5 +1,27 @@
 #!/bin/bash
 
+# Configuration for notification thresholds
+CPU_CRITICAL=90
+MEMORY_CRITICAL=90
+DISK_CRITICAL=90
+BATTERY_LOW=15
+BATTERY_CRITICAL=5
+
+# Global state tracking to avoid spam notifications
+LAST_CPU_ALERT=0
+LAST_MEMORY_ALERT=0
+LAST_DISK_ALERT=0
+LAST_BATTERY_ALERT=0
+LAST_BLUETOOTH_DISCONNECT=0
+
+# Notification cooldown (seconds)
+NOTIFICATION_COOLDOWN=300  # 5 minutes
+
+# Directory for state files
+STATE_DIR="/tmp/status_bar_notifications"
+mkdir -p "$STATE_DIR"
+
+
 get_window_title() {
     title=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true).name // empty' 2>/dev/null | head -1)
 
@@ -9,8 +31,47 @@ get_window_title() {
     fi
 }
 
+send_notification() {
+    local urgency="$1"
+    local title="$2"
+    local message="$3"
+    local icon="$4"
+
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send -u "$urgency" -i "$icon" "$title" "$message"
+    fi
+}
+
+check_notification_cooldown() {
+    local alert_type="$1"
+    local state_file="$STATE_DIR/${alert_type}_last_alert"
+    local current_time=$(date +%s)
+
+    if [ -f "$state_file" ]; then
+        local last_alert=$(cat "$state_file")
+        local time_diff=$((current_time - last_alert))
+        if [ $time_diff -lt $NOTIFICATION_COOLDOWN ]; then
+            return 1  # Still in cooldown
+        fi
+    fi
+
+    # Update the state file
+    echo "$current_time" > "$state_file"
+    return 0  # Can send notification
+}
+
 get_cpu_usage() {
     cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1)
+    cpu_int=$(printf "%.0f" "$cpu")
+
+    # Check for critical CPU usage
+    if [ "$cpu_int" -ge "$CPU_CRITICAL" ]; then
+        if check_notification_cooldown "$LAST_CPU_ALERT"; then
+            send_notification "critical" "High CPU Usage" "CPU usage is at ${cpu}%" "dialog-warning"
+            LAST_CPU_ALERT=$(date +%s)
+        fi
+    fi
+
     echo "  ${cpu}%"
 }
 
@@ -20,6 +81,15 @@ get_memory_usage() {
     mem_percent=$(echo "$mem_info" | awk '{printf("%.0f", ($3/$2) * 100.0)}')
     mem_used=$(echo "$mem_info" | awk '{print $3}')
     mem_total=$(echo "$mem_info" | awk '{print $2}')
+
+    # Check for critical memory usage
+    if [ "$mem_percent" -ge "$MEMORY_CRITICAL" ]; then
+        if check_notification_cooldown "$LAST_MEMORY_ALERT"; then
+            send_notification "critical" "High Memory Usage" "Memory usage is at ${mem_percent}% (${mem_used}/${mem_total})" "dialog-warning"
+            LAST_MEMORY_ALERT=$(date +%s)
+        fi
+    fi
+
     echo "  ${mem_percent}% (${mem_used})"  # nf-md-memory
 }
 
@@ -28,12 +98,24 @@ get_disk_usage() {
         disk_info=$(df -BG /home | awk 'NR==2')
         home_used=$(echo "$disk_info" | awk '{print $3}' | sed 's/G//')
         home_used_percent=$(echo "$disk_info" | awk '{print $5}' | sed 's/%//')
+        disk_percent="$home_used_percent"
+        disk_location="/home"
         echo "  ${home_used}Gb (${home_used_percent}%)"
     else
         disk_info=$(df -BG / | awk 'NR==2')
         root_used=$(echo "$disk_info" | awk '{print $3}' | sed 's/G//')
         root_used_percent=$(echo "$disk_info" | awk '{print $5}' | sed 's/%//')
+        disk_percent="$root_used_percent"
+        disk_location="/"
         echo "  ${root_used}Gb (${root_used_percent}%)"
+    fi
+
+    # Check for critical disk usage
+    if [ "$disk_percent" -ge "$DISK_CRITICAL" ]; then
+        if check_notification_cooldown "$LAST_DISK_ALERT"; then
+            send_notification "critical" "Low Disk Space" "Disk usage for $disk_location is at ${disk_percent}%" "drive-harddisk"
+            LAST_DISK_ALERT=$(date +%s)
+        fi
     fi
 }
 
@@ -78,6 +160,8 @@ get_network() {
             if [ -n "$eth_name" ]; then
                 echo "󰈀  ${eth_name}"  # nf-md-ethernet (if you have it)
             else
+                # No network connection - send notification
+                send_notification "normal" "Network Disconnected" "No active network connection" "network-offline"
                 echo "󰤭"  # nf-md-wifi_strength_off
             fi
         fi
@@ -204,6 +288,9 @@ get_brightness() {
 }
 
 get_battery() {
+    local battery_capacity=""
+    local battery_status=""
+
     # Try upower first (more reliable on some systems)
     if command -v upower >/dev/null 2>&1; then
         # Get battery device path
@@ -228,6 +315,9 @@ get_battery() {
                 fi
 
                 if [ -n "$capacity" ]; then
+                    battery_capacity="$capacity"
+                    battery_status="$status"
+
                     # Choose icon based on status and capacity
                     if [ "$status" = "charging" ]; then
                         icon="󰂄"  # nf-md-battery_charging
@@ -249,39 +339,54 @@ get_battery() {
                     else
                         echo "${icon} ${capacity}%"
                     fi
-                    return
                 fi
+            fi
+        fi
+    else
+        # Fallback to /sys method if upower fails
+        battery_path=""
+        for bat in /sys/class/power_supply/BAT*; do
+            if [ -d "$bat" ]; then
+                battery_path="$bat"
+                break
+            fi
+        done
+
+        if [ -n "$battery_path" ] && [ -f "$battery_path/capacity" ]; then
+            capacity=$(cat "$battery_path/capacity" 2>/dev/null)
+            status=$(cat "$battery_path/status" 2>/dev/null)
+
+            if [ -n "$capacity" ]; then
+                battery_capacity="$capacity"
+                battery_status="$status"
+
+                if [ "$status" = "Charging" ]; then
+                    icon="󰂄"  # nf-md-battery_charging
+                elif [ "$capacity" -gt 75 ]; then
+                    icon="󰂂"  # nf-md-battery_80
+                elif [ "$capacity" -gt 50 ]; then
+                    icon="󰂀"  # nf-md-battery_60
+                elif [ "$capacity" -gt 25 ]; then
+                    icon="󰁾"  # nf-md-battery_40
+                else
+                    icon="󰁺"  # nf-md-battery_20
+                fi
+
+                echo "${icon} ${capacity}%"
             fi
         fi
     fi
 
-    # Fallback to /sys method if upower fails
-    battery_path=""
-    for bat in /sys/class/power_supply/BAT*; do
-        if [ -d "$bat" ]; then
-            battery_path="$bat"
-            break
-        fi
-    done
-
-    if [ -n "$battery_path" ] && [ -f "$battery_path/capacity" ]; then
-        capacity=$(cat "$battery_path/capacity" 2>/dev/null)
-        status=$(cat "$battery_path/status" 2>/dev/null)
-
-        if [ -n "$capacity" ]; then
-            if [ "$status" = "Charging" ]; then
-                icon="󰂄"  # nf-md-battery_charging
-            elif [ "$capacity" -gt 75 ]; then
-                icon="󰂂"  # nf-md-battery_80
-            elif [ "$capacity" -gt 50 ]; then
-                icon="󰂀"  # nf-md-battery_60
-            elif [ "$capacity" -gt 25 ]; then
-                icon="󰁾"  # nf-md-battery_40
-            else
-                icon="󰁺"  # nf-md-battery_20
+    # Check for battery alerts
+    if [ -n "$battery_capacity" ] && [ "$battery_status" != "charging" ] && [ "$battery_status" != "Charging" ] && [ "$battery_status" != "fully-charged" ]; then
+        if [ "$battery_capacity" -le "$BATTERY_CRITICAL" ]; then
+            if check_notification_cooldown "battery_critical"; then
+                send_notification "critical" "Critical Battery Level" "Battery is at ${battery_capacity}%. Please charge immediately!" "battery-caution"
             fi
-
-            echo "${icon} ${capacity}%"
+        elif [ "$battery_capacity" -le "$BATTERY_LOW" ]; then
+            if check_notification_cooldown "battery_low"; then
+                send_notification "normal" "Low Battery" "Battery is at ${battery_capacity}%. Consider charging soon." "battery-low"
+            fi
         fi
     fi
 }
@@ -304,6 +409,15 @@ get_keyboard_layout() {
 get_date_time() {
     date +'󰃭 %Y-%m-%d (%a) | 󰥔 %H:%M:%S'  # nf-md-calendar, nf-md-clock
 }
+
+# Cleanup function
+cleanup() {
+    rm -rf "$STATE_DIR"
+    exit 0
+}
+
+# Set up cleanup on script exit
+trap cleanup EXIT INT TERM
 
 # Main loop
 while true; do
