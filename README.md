@@ -56,7 +56,8 @@ Real-time monitoring with **intelligent notifications**:
 ### Layout
 - `Mod+E` - Toggle tabbed/split layout
 - `Mod+W` - Focus child container
-- `Mod+U` - Toggle floating workspace
+- `Mod+U` - Make workspace floating
+- `Mod+Shift+U` - Make workspace normal
 
 ### Gaps
 - `Mod+G` - Increase inner gaps on current workspace
