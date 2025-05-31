@@ -189,8 +189,8 @@ bindsym $mod+Ctrl+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next tr
 bindsym $mod+Ctrl+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true false
 
 # Gestures
-bindgesture swipe:right exec ~/.config/sway/scripts/dynamic-workspace.sh next
-bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh prev
+bindgesture swipe:right exec ~/.config/sway/scripts/dynamic-workspace.sh prev
+bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh next
 
 # floating things
 for_window [workspace=$10] floating enable
