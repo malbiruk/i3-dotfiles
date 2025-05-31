@@ -2,6 +2,7 @@
 
 direction=$1
 move_container=${2:-false}  # second argument for moving containers
+follow=${3:-true}
 
 current=$(swaymsg -t get_workspaces | jq '.[] | select(.focused) | .num')
 
@@ -17,5 +18,6 @@ if [ "$move_container" = "true" ]; then
     swaymsg move container to workspace number $target
 fi
 
-# Always switch to the target workspace
-swaymsg workspace number $target
+if [ "$follow" = "true" ]; then
+    swaymsg workspace number $target
+fi

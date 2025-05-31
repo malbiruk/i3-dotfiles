@@ -17,7 +17,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 # set $menu exec $term --class=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
-set $menu exec wofi
+set $menu exec wofi -S drun
 set $window_search exec /home/klim/.config/sway/scripts/windows.py
 
 for_window [app_id="^launcher$"] floating enable, border none
@@ -61,8 +61,6 @@ exec swayidle -w \
         middle_emulation enabled
     }
 
-    bindgesture swipe:right exec ~/.config/sway/scripts/dynamic-workspace.sh prev
-    bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh next
     bindgesture swipe:up $window_search
     bindgesture swipe:down $menu
 
@@ -154,9 +152,6 @@ bindsym $mod+8 workspace $8
 bindsym $mod+9 workspace $9
 bindsym $mod+0 workspace $10
 
-bindsym $mod+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next
-bindsym $mod+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev
-
 # move focused container to workspace
 bindsym $mod+Control+1 move container to workspace $1
 bindsym $mod+Control+2 move container to workspace $2
@@ -181,8 +176,21 @@ bindsym $mod+Shift+8 move container to workspace $8; workspace $8
 bindsym $mod+Shift+9 move container to workspace $9; workspace $9
 bindsym $mod+Shift+0 move container to workspace $10; workspace $10
 
-bindsym $mod+Shift+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next true
-bindsym $mod+Shift+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true
+# Navigate workspaces dynamically
+bindsym $mod+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next
+bindsym $mod+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev
+
+# Move container AND follow to workspace
+bindsym $mod+Shift+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next true true
+bindsym $mod+Shift+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true true
+
+# Move container but STAY on current workspace
+bindsym $mod+Ctrl+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next true false
+bindsym $mod+Ctrl+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true false
+
+# Gestures
+bindgesture swipe:right exec ~/.config/sway/scripts/dynamic-workspace.sh next
+bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh prev
 
 # floating things
 for_window [workspace=$10] floating enable
