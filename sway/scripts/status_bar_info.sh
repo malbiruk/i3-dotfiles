@@ -100,14 +100,14 @@ get_disk_usage() {
         home_used_percent=$(echo "$disk_info" | awk '{print $5}' | sed 's/%//')
         disk_percent="$home_used_percent"
         disk_location="/home"
-        echo "  ${home_used}Gi (${home_used_percent}%)"
+        echo "  ${home_used_percent}% (${home_used}Gi)"
     else
         disk_info=$(df -h / | awk 'NR==2')
         root_used=$(echo "$disk_info" | awk '{print $3}' | sed 's/G//')
         root_used_percent=$(echo "$disk_info" | awk '{print $5}' | sed 's/%//')
         disk_percent="$root_used_percent"
         disk_location="/"
-        echo "  ${root_used}Gi (${root_used_percent}%)"
+        echo "  ${root_used_percent}% (${root_used}Gi)"
     fi
 
     # Check for critical disk usage

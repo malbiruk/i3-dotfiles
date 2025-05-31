@@ -1,166 +1,124 @@
 # 🌐 Matrix-Inspired Sway Configuration
 
-A sleek, minimal Sway window manager configuration with Matrix-inspired green-on-black aesthetics and dynamic wallpaper generation.
+A minimal Sway window manager configuration with Matrix-inspired aesthetics, dynamic wallpapers, and intelligent system monitoring with notifications.
 
-![Desktop Screenshot](20250529_01h34m23s_grim.png)
+![Desktop Screenshot](screenshot.png)
 
 ## ✨ Features
 
-### 🚀 Application Launcher
-- **Wofi** as the primary application launcher (`Mod+D`)
-- Clean, minimal interface with Matrix green highlights
-- Custom CSS styling for consistent theming
-
-### 🔍 Window Management
+### 🚀 Core Applications
+- **Wofi** launcher (`Mod+D`) with Matrix styling
 - **Window search** with fuzzy matching (`Mod+Shift+W`)
-- Quick window switching across workspaces
-- Python-based window switcher with rich formatting
+- **File finder** by recency (`Mod+Shift+F`)
+- **Power menu** (`Mod+Shift+Q`) - lock, logout, suspend, reboot, shutdown
 
-### 📂 File Explorer
-- **Smart file finder** (`Mod+Shift+F`) - finds files by recency
-- Integrates with `wofi` for seamless file navigation
-- Shows file paths for easy identification
+### 🎨 Visual Theme
+- **Color Scheme**: Black (`#0a0c0e`), Matrix Green (`#00ff00`), Red alerts (`#ff6b6b`)
+- **Dynamic glitch wallpapers** - auto-generated on login with teal/green noise patterns
+- **Consistent theming** across all applications
 
-### 🔒 System Controls
-- **Logout menu** (`Mod+Shift+Q`) with power options:
-  - 🔒 Lock screen
-  - 🚪 Logout
-  - 💤 Suspend
-  - 🔄 Reboot
-  - ⏻ Shutdown
+### 📊 Smart Status Bar
+Real-time monitoring with **intelligent notifications**:
+- 🖥️ **CPU usage** - alerts at 90%+
+- 🧠 **Memory usage** - percentage + absolute values, alerts at 90%+
+- 💾 **Disk usage** - alerts at 90%+
+- 📶 **Network** - WiFi signal + disconnection alerts
+- 🔋 **Battery** - low (15%) and critical (5%) alerts
+- 🔊 **Volume**, ☀️ **Brightness**, 🔵 **Bluetooth**, ⌨️ **Layout**, 📅 **Time**
+- 🪟 **Window title** display
 
-### 🎨 Dynamic Wallpapers
-- **Auto-generated glitch wallpapers** on every login
-- Matrix-inspired noise patterns in green/teal
-- Python script creates unique backgrounds each session
-- Subtle scan lines and distortion effects
-
-### 🎨 Color Scheme
-```
-Background: #0a0c0e (Deep Black)
-Primary:    #00ff00 (Matrix Green)
-Secondary:  #888a85 (Muted Gray)
-Accent:     #7f99a6 (Cyan-Blue)
-```
-
-### 📊 Status Bar
-- **Custom bash-based status bar** with Nerd Font icons
-- Real-time system monitoring:
-  - 🖥️ CPU usage
-  - 🧠 Memory usage (percentage + absolute)
-  - 💾 Disk usage
-  - 📶 Network status with signal strength
-  - 🔊 Volume control
-  - 🔋 Battery status (if available)
-  - ⌨️ Keyboard layout
-  - 📅 Date and time
-  - 🪟 Current window title
+### 🔔 Notification System
+- **Smart cooldown** (5-min intervals) prevents spam
+- **Mako integration** with Matrix theming
+- **State persistence** across sessions
 
 ### 🤲 Gesture Support
-Touchpad gestures for seamless navigation:
-- **Swipe right/left**: Switch workspaces
-- **Swipe up**: Open window search
-- **Swipe down**: Open application launcher
+- Swipe left/right: Switch workspaces
+- Swipe up: Window search
+- Swipe down: App launcher
 
-### ⌨️ Key Bindings
+## ⌨️ Key Bindings
 
-#### Core Navigation
-- `Mod+Return` - Terminal (Alacritty)
-- `Mod+D` - Application launcher
-- `Mod+Q` - Kill focused window
-
-#### Advanced Features  
+### Core
+- `Mod+Return` - Terminal
+- `Mod+D` - App launcher
+- `Mod+Q` - Kill window
 - `Mod+Shift+W` - Window search
 - `Mod+Shift+F` - File finder
-- `Mod+Shift+Q` - Logout menu
+- `Mod+Shift+Q` - Power menu
 
-#### Workspace Management
-- `Mod+1-0` - Switch to workspace
-- `Mod+Shift+1-0` - Move window to workspace and follow
-- `Mod+Ctrl+1-0` - Move window to workspace (stay current)
-- `Mod+=/−` - Next/previous workspace
-
-#### Layout Controls
-- `Mod+S/W/E` - Stacking/tabbed/split layout
+### Layout
+- `Mod+S` - Stacking layout
+- `Mod+E` - Toggle tabbed/split layout
+- `Mod+W` - Focus child container
 - `Mod+F` - Fullscreen
 - `Mod+Space` - Toggle floating
+
+### Notifications
+- `Mod+N` - Dismiss notification
+- `Mod+Shift+N` - Dismiss all notifications
+
+### Workspaces
+- `Mod+1-0` - Switch workspace
+- `Mod+Shift+1-0` - Move window + follow
+- `Mod+Ctrl+1-0` - Move window only
+- `Mod+=/−` - Next/previous workspace
 
 ## 🛠️ Installation
 
 ### Prerequisites
 ```bash
-# Core components
-sudo pacman -S sway wofi alacritty mako grim
-
-# Status bar dependencies  
-sudo pacman -S jq networkmanager
-
-# Wallpaper generator
+sudo pacman -S sway wofi alacritty mako grim jq networkmanager upower libnotify
 sudo pacman -S python python-pip python-pillow python-numpy
 ```
 
 ### Setup
-1. Clone this repository:
-   ```bash
-   git clone <repo-url> ~/.config/sway-dotfiles
-   ```
+```bash
+git clone <repo-url> ~/.config/sway-dotfiles
+ln -sf ~/.config/sway-dotfiles/sway ~/.config/sway
+ln -sf ~/.config/sway-dotfiles/wofi ~/.config/wofi
+ln -sf ~/.config/sway-dotfiles/alacritty ~/.config/alacritty
+ln -sf ~/.config/sway-dotfiles/mako ~/.config/mako
 
-2. Create symbolic links:
-   ```bash
-   ln -sf ~/.config/sway-dotfiles/sway ~/.config/sway
-   ln -sf ~/.config/sway-dotfiles/wofi ~/.config/wofi
-   ln -sf ~/.config/sway-dotfiles/alacritty ~/.config/alacritty
-   ```
+# Setup wallpaper generator
+cd ~/.config/sway-dotfiles/noise_wp
+python -m venv .venv
+source .venv/bin/activate
+pip install pillow numpy
+```
 
-3. Set up wallpaper generator:
-   ```bash
-   cd ~/.config/sway-dotfiles/noise_wp
-   python -m venv .venv
-   source .venv/bin/activate
-   pip install pillow numpy
-   ```
+## 🔧 Customization
 
-4. Update paths in `sway/config` to match your username
-
-## 🎨 Customization
+### Alert Thresholds
+Edit `sway/scripts/status_bar_info.sh`:
+```bash
+CPU_CRITICAL=90
+MEMORY_CRITICAL=90
+DISK_CRITICAL=90
+BATTERY_LOW=15
+BATTERY_CRITICAL=5
+NOTIFICATION_COOLDOWN=300
+```
 
 ### Colors
-Edit the color variables in `sway/config`:
+Edit `sway/config`:
 ```bash
 set $black  #0a0c0e
 set $white  #00ff00  # Matrix green
-set $grey   #888a85
+set $red    #ff6b6b   # Alerts
 ```
 
-### Status Bar
-Modify `sway/scripts/status_bar_info.sh` to add/remove modules or change refresh intervals.
-
 ### Wallpaper
-Adjust wallpaper generation parameters in `noise_wp/glitchy_wp.py`:
-- Color intensity
-- Noise patterns  
-- Distortion effects
-- Resolution
+Unique glitch wallpapers are automatically generated on every login.
 
-## 🔧 Configuration Files
+## 📁 Configuration Files
 
-- `sway/config` - Main Sway configuration
-- `sway/scripts/status_bar_info.sh` - Custom status bar script
-- `sway/scripts/logout_menu.sh` - Power menu script
-- `sway/scripts/windows.py` - Window switcher
-- `wofi/config` - Wofi launcher settings
-- `wofi/style.css` - Wofi visual styling
-- `noise_wp/glitchy_wp.py` - Dynamic wallpaper generator
-
-## 🎯 Philosophy
-
-This configuration prioritizes:
-- **Minimalism** - Clean, distraction-free interface
-- **Efficiency** - Keyboard-driven workflow with gesture support
-- **Aesthetics** - Consistent Matrix-inspired theming
-- **Functionality** - Rich system information without bloat
-
-The green-on-black color scheme reduces eye strain while maintaining the iconic Matrix aesthetic. Every element is designed to be both functional and visually cohesive.
+- `sway/config` - Main configuration with Matrix colors
+- `sway/scripts/status_bar_info.sh` - Status bar with notifications
+- `wofi/style.css` - Launcher styling
+- `alacritty/alacritty.toml` - Terminal configuration
+- `mako/config` - Notification styling
+- `noise_wp/glitchy_wp.py` - Wallpaper generator
 
 ---
 
