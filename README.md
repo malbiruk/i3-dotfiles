@@ -74,8 +74,9 @@ Real-time monitoring with **intelligent notifications**:
 - `Mod+1-0` - Switch to numbered workspace
 - `Mod+Shift+1-0` - Move window + follow to numbered workspace
 - `Mod+Ctrl+1-0` - Move window only to numbered workspace
-- `Mod+=/−` - Dynamic next/previous workspace (creates new workspaces automatically)
-- `Mod+Shift+=/−` - Move container + follow to adjacent workspace
+- `Mod+=/-` - Dynamic next/previous workspace (creates new workspaces automatically)
+- `Mod+Shift+=/-` - Move window + follow to adjacent workspace
+- `Mod+Ctrl+=/-` - Move window only to adjacent workspace
 
 ## 🛠️ Installation
 
