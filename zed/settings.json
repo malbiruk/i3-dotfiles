@@ -89,7 +89,7 @@
     "dark": "ZedHacker Matrix"
   },
   "terminal": {
-    "dock": "right",
+    "dock": "bottom",
     "blinking": "on",
     "copy_on_select": true,
     "detect_venv": {
