@@ -37,7 +37,7 @@ Real-time monitoring with **intelligent notifications**:
 - **Seamless navigation** with `Mod+=/−` for next/previous workspace
 - **Gesture support** - swipe left/right to navigate workspaces
 - **Container movement** with `Mod+Shift+=/−` - move windows and follow to adjacent workspaces
-- **Boundary protection** - prevents going below workspace 0
+- **Boundary protection** - prevents going below workspace 0 (special floating workspace)
 
 ### 🤲 Gesture Support
 - Swipe left/right: Dynamic workspace switching
@@ -47,19 +47,24 @@ Real-time monitoring with **intelligent notifications**:
 ## ⌨️ Key Bindings
 
 ### Core
-- `Mod+Return` - Terminal
-- `Mod+D` - App launcher
 - `Mod+Q` - Kill window
+- `Mod-Shift-D` - Run command
 - `Mod+Shift+W` - Window search
 - `Mod+Shift+F` - File finder
 - `Mod+Shift+Q` - Power menu
 
 ### Layout
-- `Mod+S` - Stacking layout
 - `Mod+E` - Toggle tabbed/split layout
 - `Mod+W` - Focus child container
-- `Mod+F` - Fullscreen
-- `Mod+Space` - Toggle floating
+- `Mod+U` - Toggle floating workspace
+
+### Gaps
+- `Mod+G` - Increase inner gaps on current workspace
+- `Mod+Shift-G` - Decrease inner gaps on current workspace
+- `Mod+X` - Increase outer gaps on current workspace
+- `Mod+Shift-X` - Decrease outer gaps on current workspace
+- `Mod+Ctrl-G` - Remove gaps on current workspace
+ 
 
 ### Notifications
 - `Mod+N` - Dismiss notification
@@ -69,8 +74,8 @@ Real-time monitoring with **intelligent notifications**:
 - `Mod+1-0` - Switch to numbered workspace
 - `Mod+Shift+1-0` - Move window + follow to numbered workspace
 - `Mod+Ctrl+1-0` - Move window only to numbered workspace
-- `Mod+=/−` - **Dynamic next/previous workspace** (creates new workspaces automatically)
-- `Mod+Shift+=/−` - **Move container + follow** to adjacent workspace
+- `Mod+=/−` - Dynamic next/previous workspace (creates new workspaces automatically)
+- `Mod+Shift+=/−` - Move container + follow to adjacent workspace
 
 ## 🛠️ Installation
 
@@ -123,7 +128,7 @@ Unique glitch wallpapers are automatically generated on every login.
 
 - `sway/config` - Main configuration with Matrix colors
 - `sway/scripts/status_bar_info.sh` - Status bar with notifications
-- `sway/scripts/dynamic-workspace.sh` - **Smart workspace navigation logic**
+- `sway/scripts/dynamic-workspace.sh` - Smart workspace navigation logic
 - `wofi/style.css` - Launcher styling
 - `alacritty/alacritty.toml` - Terminal configuration
 - `mako/config` - Notification styling
