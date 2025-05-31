@@ -32,8 +32,15 @@ Real-time monitoring with **intelligent notifications**:
 - **Mako integration** with Matrix theming
 - **State persistence** across sessions
 
+### 🚀 Dynamic Workspace Navigation
+- **Smart workspace switching** - automatically creates new workspaces as needed
+- **Seamless navigation** with `Mod+=/−` for next/previous workspace
+- **Gesture support** - swipe left/right to navigate workspaces
+- **Container movement** with `Mod+Shift+=/−` - move windows and follow to adjacent workspaces
+- **Boundary protection** - prevents going below workspace 0
+
 ### 🤲 Gesture Support
-- Swipe left/right: Switch workspaces
+- Swipe left/right: Dynamic workspace switching
 - Swipe up: Window search
 - Swipe down: App launcher
 
@@ -59,10 +66,11 @@ Real-time monitoring with **intelligent notifications**:
 - `Mod+Shift+N` - Dismiss all notifications
 
 ### Workspaces
-- `Mod+1-0` - Switch workspace
-- `Mod+Shift+1-0` - Move window + follow
-- `Mod+Ctrl+1-0` - Move window only
-- `Mod+=/−` - Next/previous workspace
+- `Mod+1-0` - Switch to numbered workspace
+- `Mod+Shift+1-0` - Move window + follow to numbered workspace
+- `Mod+Ctrl+1-0` - Move window only to numbered workspace
+- `Mod+=/−` - **Dynamic next/previous workspace** (creates new workspaces automatically)
+- `Mod+Shift+=/−` - **Move container + follow** to adjacent workspace
 
 ## 🛠️ Installation
 
@@ -115,6 +123,7 @@ Unique glitch wallpapers are automatically generated on every login.
 
 - `sway/config` - Main configuration with Matrix colors
 - `sway/scripts/status_bar_info.sh` - Status bar with notifications
+- `sway/scripts/dynamic-workspace.sh` - **Smart workspace navigation logic**
 - `wofi/style.css` - Launcher styling
 - `alacritty/alacritty.toml` - Terminal configuration
 - `mako/config` - Notification styling
