@@ -14,7 +14,7 @@ A minimal Sway window manager configuration with Matrix-inspired aesthetics, dyn
 
 ### 🎨 Visual Theme
 - **Color Scheme**: Black (`#0a0c0e`), Matrix Green (`#00ff00`), Red alerts (`#ff6b6b`)
-- **Dynamic glitch wallpapers** - auto-generated on login with teal/green noise patterns
+- **Dynamic glitch wallpapers** - auto-generated on startup/config reload with teal/green noise patterns
 - **Consistent theming** across all applications
 
 ### 📊 Smart Status Bar
@@ -100,40 +100,6 @@ python -m venv .venv
 source .venv/bin/activate
 pip install pillow numpy
 ```
-
-## 🔧 Customization
-
-### Alert Thresholds
-Edit `sway/scripts/status_bar_info.sh`:
-```bash
-CPU_CRITICAL=90
-MEMORY_CRITICAL=90
-DISK_CRITICAL=90
-BATTERY_LOW=15
-BATTERY_CRITICAL=5
-NOTIFICATION_COOLDOWN=300
-```
-
-### Colors
-Edit `sway/config`:
-```bash
-set $black  #0a0c0e
-set $white  #00ff00  # Matrix green
-set $red    #ff6b6b   # Alerts
-```
-
-### Wallpaper
-Unique glitch wallpapers are automatically generated on every login.
-
-## 📁 Configuration Files
-
-- `sway/config` - Main configuration with Matrix colors
-- `sway/scripts/status_bar_info.sh` - Status bar with notifications
-- `sway/scripts/dynamic-workspace.sh` - Smart workspace navigation logic
-- `wofi/style.css` - Launcher styling
-- `alacritty/alacritty.toml` - Terminal configuration
-- `mako/config` - Notification styling
-- `noise_wp/glitchy_wp.py` - Wallpaper generator
 
 ---
 
