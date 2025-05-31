@@ -20,8 +20,7 @@ set $term alacritty
 set $menu exec wofi -S drun
 set $window_search exec /home/klim/.config/sway/scripts/windows.py
 
-for_window [app_id="^launcher$"] floating enable, border none
-
+for_window [app_id="^launcher$"] floating enable
 focus_on_window_activation focus
 
 ### Output configuration (wallpaper)
@@ -194,7 +193,8 @@ bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh next
 
 # floating things
 for_window [workspace=$10] floating enable
-bindsym $mod+u [workspace=__focused__] floating toggle
+bindsym $mod+u exec ~/.config/sway/scripts/floating-workspace.sh enable
+bindsym $mod+Shift+u exec ~/.config/sway/scripts/floating-workspace.sh disable
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
