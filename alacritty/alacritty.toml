@@ -15,15 +15,15 @@ family = "Monaco Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "Monaco"
+family = "Roboto Mono"
 style = "Bold"
 
 [font.italic]
-family = "Monaco"
+family = "Monaco Nerd Font"
 style = "Italic"
 
 [font.bold_italic]
-family = "Monaco"
+family = "Monaco Nerd Font"
 style = "Bold Italic"
 
 [font.offset]
