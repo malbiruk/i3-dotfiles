@@ -293,7 +293,7 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioRaiseVolume exec bash -c 'vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\d+%" | head -1 | tr -d "%"); new=$((vol+5)); [ $new -gt 250 ] && new=250; pactl set-sink-volume @DEFAULT_SINK@ ${new}%'
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec light -U 5

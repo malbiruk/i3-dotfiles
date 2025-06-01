@@ -8,6 +8,7 @@ current=$(swaymsg -t get_workspaces | jq '.[] | select(.focused) | .num')
 
 if [ "$direction" = "next" ]; then
     target=$((current + 1))
+    [ $target -gt 9 ] && target=9
 elif [ "$direction" = "prev" ]; then
     target=$((current - 1))
     [ $target -lt 0 ] && target=0
