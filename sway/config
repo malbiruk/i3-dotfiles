@@ -66,8 +66,9 @@ exec swayidle -w \
 
     input type:keyboard {
         xkb_layout us,ru
-        xkb_options grp:shifts_toggle
+        xkb_options grp:win_space_toggle
     }
+
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -219,7 +220,7 @@ bindsym $mod+Ctrl+less move workspace to output left
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym Mod1+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
