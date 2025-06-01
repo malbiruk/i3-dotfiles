@@ -8,7 +8,7 @@ A minimal Sway window manager configuration with Matrix-inspired aesthetics, dyn
 
 ### 🚀 Core Applications
 - **Wofi** launcher (`Mod+D`) with Matrix styling
-- **Window search** with fuzzy matching (`Mod+Shift+W`)
+- **Window search** with fuzzy matching (`Alt+Tab`)
 - **File finder** by recency (`Mod+Shift+F`)
 - **Power menu** (`Mod+Shift+Q`) - lock, logout, suspend, reboot, shutdown
 
@@ -49,7 +49,7 @@ Real-time monitoring with **intelligent notifications**:
 ### Core
 - `Mod+Q` - Kill window
 - `Mod-Shift-D` - Run command
-- `Mod+Shift+W` - Window search
+- `Alt+Tab` - Window search
 - `Mod+Shift+F` - File finder
 - `Mod+Shift+Q` - Power menu
 
