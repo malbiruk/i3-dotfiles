@@ -7,14 +7,14 @@ case "$1" in
         # Add a specific for_window rule for this workspace
         swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating enable"
         # Enable floating for current windows
-        swaymsg "[workspace=__focused__] floating enable"
+        swaymsg "[workspace=\"$CURRENT_WS\"] floating enable"
         notify-send "Floating enabled for workspace: $CURRENT_WS"
         ;;
     "disable")
         # Try to counteract by adding a disable rule (this is hacky but might work)
         swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating disable"
         # Disable floating for current windows
-        swaymsg "[workspace=__focused__] floating disable"
+        swaymsg "[workspace=\"$CURRENT_WS\"] floating disable"
 	swaymsg reload
         notify-send "Floating disabled for workspace: $CURRENT_WS"
         ;;

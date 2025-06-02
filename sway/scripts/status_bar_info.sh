@@ -161,7 +161,9 @@ get_network() {
                 echo "󰈀  ${eth_name}"  # nf-md-ethernet (if you have it)
             else
                 # No network connection - send notification
-                send_notification "normal" "Network Disconnected" "No active network connection" "network-offline"
+                # if check_notification_cooldown "battery_low"; then
+                #     send_notification "normal" "Network Disconnected" "No active network connection" "network-offline"
+                # fi
                 echo "󰤭"  # nf-md-wifi_strength_off
             fi
         fi

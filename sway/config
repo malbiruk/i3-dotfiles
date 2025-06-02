@@ -364,3 +364,4 @@ bindsym $mod+Shift+n exec makoctl dismiss -a
 exec mako
 exec blueman-applet
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
