@@ -8,6 +8,5 @@ gtk_dark=true
 prompt=
 location=center
 insensitive=true
-matching=fuzzy
 no_actions=true
 always_parse_args=true
