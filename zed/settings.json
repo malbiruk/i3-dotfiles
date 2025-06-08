@@ -69,7 +69,7 @@
       "min_column": 80
     }
   },
-  "vim_mode": true,
+  "vim_mode": false,
   "relative_line_numbers": false,
   "vim": {
     "toggle_relative_line_numbers": true
