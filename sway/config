@@ -234,7 +234,7 @@ bindsym $mod+Ctrl+less move workspace to output left
 bindsym $mod+Shift+Tab move scratchpad
 bindsym $mod+Tab scratchpad show
 
-# make to scratchpad with marks
+# Store to scratchpad slots
 bindsym $mod+Shift+F1 mark --add --toggle 1, move scratchpad
 bindsym $mod+Shift+F2 mark --add --toggle 2, move scratchpad
 bindsym $mod+Shift+F3 mark --add --toggle 3, move scratchpad
@@ -248,7 +248,7 @@ bindsym $mod+Shift+F10 mark --add --toggle 10, move scratchpad
 bindsym $mod+Shift+F11 mark --add --toggle 11, move scratchpad
 bindsym $mod+Shift+F12 mark --add --toggle 12, move scratchpad
 
-# switch to marks
+# Show scratchpad slots
 bindsym $mod+F1 [con_mark="1"] scratchpad show
 bindsym $mod+F2 [con_mark="2"] scratchpad show
 bindsym $mod+F3 [con_mark="3"] scratchpad show
@@ -261,6 +261,20 @@ bindsym $mod+F9 [con_mark="9"] scratchpad show
 bindsym $mod+F10 [con_mark="10"] scratchpad show
 bindsym $mod+F11 [con_mark="11"] scratchpad show
 bindsym $mod+F12 [con_mark="12"] scratchpad show
+
+# Remove mark and bring back to workspace
+bindsym $mod+Ctrl+F1 [con_mark="1"] unmark 1, floating toggle
+bindsym $mod+Ctrl+F2 [con_mark="2"] unmark 2, floating toggle
+bindsym $mod+Ctrl+F3 [con_mark="3"] unmark 3, floating toggle
+bindsym $mod+Ctrl+F4 [con_mark="4"] unmark 4, floating toggle
+bindsym $mod+Ctrl+F5 [con_mark="5"] unmark 5, floating toggle
+bindsym $mod+Ctrl+F6 [con_mark="6"] unmark 6, floating toggle
+bindsym $mod+Ctrl+F7 [con_mark="7"] unmark 7, floating toggle
+bindsym $mod+Ctrl+F8 [con_mark="8"] unmark 8, floating toggle
+bindsym $mod+Ctrl+F9 [con_mark="9"] unmark 9, floating toggle
+bindsym $mod+Ctrl+F10 [con_mark="10"] unmark 10, floating toggle
+bindsym $mod+Ctrl+F11 [con_mark="11"] unmark 11, floating toggle
+bindsym $mod+Ctrl+F12 [con_mark="12"] unmark 12, floating toggle
 
 #
 # Resizing containers:
@@ -365,3 +379,4 @@ exec mako
 exec blueman-applet
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
+exec /usr/bin/syncthing serve --no-browser --logfile=default

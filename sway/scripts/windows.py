@@ -4,6 +4,49 @@ import subprocess
 from argparse import ArgumentParser
 
 
+# Get all marks from sway
+def get_marks():
+    command = "swaymsg -t get_marks"
+    process = subprocess.Popen(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+    marks_data = process.communicate()[0]
+    return json.loads(marks_data) if marks_data else []
+
+
+# Get the mark for a specific window ID
+def get_window_mark(window_id, marks):
+    if not marks:
+        return None
+
+    # Get window info to check for marks
+    command = f"swaymsg -t get_tree"
+    process = subprocess.Popen(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+    tree_data = json.loads(process.communicate()[0])
+
+    # Find the window with this ID and check its marks
+    def find_window_marks(node):
+        if node.get("id") == window_id:
+            return node.get("marks", [])
+
+        for child in node.get("nodes", []):
+            result = find_window_marks(child)
+            if result is not None:
+                return result
+
+        for child in node.get("floating_nodes", []):
+            result = find_window_marks(child)
+            if result is not None:
+                return result
+
+        return None
+
+    window_marks = find_window_marks(tree_data)
+    return window_marks[0] if window_marks else None
+
+
 # Extract scratchpad windows
 def get_scratchpad_windows():
     command = "swaymsg -t get_tree"
@@ -97,6 +140,8 @@ def extract_nodes(workspace):
 # Returns an array of all windows in workspace order
 def parse_windows(ws_windows):
     indices, strings = [], []
+    marks = get_marks()  # Get all marks once
+
     for i_ws, ws in enumerate(ws_windows):
         for i_w, w in enumerate(ws[1]):
             indices.append((i_ws, i_w))
@@ -107,8 +152,21 @@ def parse_windows(ws_windows):
             )
             window_name = w.get("name", "Untitled")
 
-            # Format: "Workspace: App - Window" (SP for scratchpad)
-            strings.append("<b>{}</b>: {} - {}".format(ws[0], app_name, window_name))
+            # Get mark for this window
+            window_id = w.get("id")
+            mark = get_window_mark(window_id, marks) if window_id else None
+
+            # Format with marker if it exists
+            if mark:
+                # Format: "Workspace: [marker] App - Window"
+                strings.append(
+                    "<b>{}</b>: [{}] {} - {}".format(ws[0], mark, app_name, window_name)
+                )
+            else:
+                # Format: "Workspace: App - Window" (no marker)
+                strings.append(
+                    "<b>{}</b>: {} - {}".format(ws[0], app_name, window_name)
+                )
 
     return indices, strings
 

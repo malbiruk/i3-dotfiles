@@ -18,6 +18,7 @@
   },
   "auto_update": true,
   "agent": {
+    "default_view": "text_thread",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "claude-3.7-sonnet"
@@ -68,7 +69,7 @@
       "min_column": 80
     }
   },
-  "vim_mode": false,
+  "vim_mode": true,
   "relative_line_numbers": false,
   "vim": {
     "toggle_relative_line_numbers": true
