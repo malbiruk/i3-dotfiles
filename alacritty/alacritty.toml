@@ -12,6 +12,7 @@ size = 11
 
 [font.normal]
 family = "Monaco Nerd Font"
+# family = "Courier"
 style = "Regular"
 
 [font.bold]

@@ -38,10 +38,10 @@ output * bg /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png fi
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -i /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png -kl' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000 -kl'
+# exec swayidle -w \
+#          timeout 300 'swaylock -i /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png -kl' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000 -kl'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -96,7 +96,7 @@ exec swayidle -w \
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier Mod1 normal
+    floating_modifier $mod normal
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
@@ -179,18 +179,27 @@ bindsym $mod+Shift+0 move container to workspace $10; workspace $10
 # Navigate workspaces dynamically
 bindsym $mod+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next
 bindsym $mod+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev
+bindsym $mod+Mod1+equal workspace next
+bindsym $mod+Mod1+minus workspace prev
 
 # Move container AND follow to workspace
 bindsym $mod+Shift+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next true true
 bindsym $mod+Shift+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true true
+bindsym $mod+Mod1+Shift+equal move container to workspace next; workspace next
+bindsym $mod+Mod1+Shift+minus move container to workspace prev; workspace prev
 
 # Move container but STAY on current workspace
 bindsym $mod+Ctrl+equal exec ~/.config/sway/scripts/dynamic-workspace.sh next true false
 bindsym $mod+Ctrl+minus exec ~/.config/sway/scripts/dynamic-workspace.sh prev true false
+bindsym $mod+Mod1+Ctrl+equal move container to workspace next
+bindsym $mod+Mod1+Ctrl+minus move container to workspace prev
 
 # Gestures
-bindgesture swipe:right exec ~/.config/sway/scripts/dynamic-workspace.sh prev
-bindgesture swipe:left exec ~/.config/sway/scripts/dynamic-workspace.sh next
+bindgesture swipe:3:right exec ~/.config/sway/scripts/dynamic-workspace.sh prev
+bindgesture swipe:3:left exec ~/.config/sway/scripts/dynamic-workspace.sh next
+bindgesture swipe:4:right workspace prev
+bindgesture swipe:4:left workspace next
+
 
 # floating things
 for_window [workspace=$10] floating enable

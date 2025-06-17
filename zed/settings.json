@@ -18,6 +18,7 @@
   },
   "auto_update": true,
   "agent": {
+    "always_allow_tool_actions": true,
     "default_view": "text_thread",
     "inline_assistant_model": {
       "provider": "copilot_chat",
@@ -60,7 +61,10 @@
     "metrics": false
   },
   "inlay_hints": {
-    "enabled": true
+    "enabled": false,
+    "toggle_on_modifiers_press": {
+      "alt": true
+    }
   },
   "git": {
     "inline_blame": {
@@ -125,6 +129,7 @@
     "Python": {
       "language_servers": [
         "pyright", // language server, import checks
+        "!pylsp",
         "ruff" // linting and formatting
       ],
       "preferred_line_length": 100,
@@ -148,10 +153,38 @@
     }
   },
   "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null
+        }
+      }
+    },
+    "pylsp": {
+      "settings": {
+        "plugins": {
+          "ruff": {
+            "enabled": false
+          },
+          "pyflakes": {
+            "enabled": false
+          },
+          "mypy": {
+            "enabled": false
+          },
+          "pycodestyle": {
+            "enabled": false
+          }
+        }
+      }
+    },
     "pyright": {
       "settings": {
         "pyright": {
           "disableLanguageServices": false
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
         },
         "python.analysis": {
           "diagnosticMode": "openFilesOnly",
