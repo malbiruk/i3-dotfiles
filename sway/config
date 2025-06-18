@@ -38,10 +38,9 @@ output * bg /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png fi
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -i /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png -kl' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000 -kl'
+exec swayidle -w \
+         timeout 10800 'swaylock -f -c 000000 -kl && swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000 -kl'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
