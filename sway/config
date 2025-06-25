@@ -341,7 +341,8 @@ default_border pixel 1
 
 # colors
 set $black  #000000
-set $white  #a7a7a7
+set $white #a7a7a7
+set $grey  #757575
 set $red    #E06C75
 
 # window colors
@@ -351,6 +352,8 @@ client.unfocused        $black		    $black 	       $white         	$white
 client.focused_inactive $black  	    $black 	       $white	    	$white
 client.urgent           $black    	    $black 	       $red             $white
 
+set $white #DCDFE4
+
 # swaybar configuration
 bar {
         mode dock
@@ -359,10 +362,10 @@ bar {
         colors {
                 background $black
                 separator  $black
-                statusline $white
+                statusline $grey
         #                          border             background         text
-                focused_workspace  $black	      $white 		 $black
-                inactive_workspace $black             $black		 $white
+                focused_workspace  $black	      $black 		 $white
+                inactive_workspace $black             $black		 $grey
                 urgent_workspace   $black 	      $black             $red
         }
 }

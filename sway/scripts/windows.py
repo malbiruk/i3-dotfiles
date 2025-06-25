@@ -20,7 +20,7 @@ def get_window_mark(window_id, marks):
         return None
 
     # Get window info to check for marks
-    command = f"swaymsg -t get_tree"
+    command = "swaymsg -t get_tree"
     process = subprocess.Popen(
         command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )

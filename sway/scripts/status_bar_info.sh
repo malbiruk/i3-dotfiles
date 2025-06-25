@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Configuration for notification thresholds
-CPU_CRITICAL=90
-MEMORY_CRITICAL=90
-DISK_CRITICAL=90
+CPU_CRITICAL=95
+MEMORY_CRITICAL=95
+DISK_CRITICAL=95
 BATTERY_LOW=15
 BATTERY_CRITICAL=5
 
@@ -425,8 +425,8 @@ trap cleanup EXIT INT TERM
 while true; do
     # Get window title (truncate if too long)
     window_title=$(get_window_title)
-    if [ ${#window_title} -gt 90 ]; then
-        window_title="${window_title:0:90}..."
+    if [ ${#window_title} -gt 80 ]; then
+        window_title="${window_title:0:80}..."
     fi
 
     # Build status string
