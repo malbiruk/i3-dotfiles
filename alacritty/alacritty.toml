@@ -1,5 +1,7 @@
 [keyboard]
-bindings = [{ action = "SpawnNewInstance", key = "Return", mods = "Super|Alt" }]
+bindings = [
+    { action = "SpawnNewInstance", key = "Return", mods = "Super|Alt" },
+]
 
 [selection]
 save_to_clipboard = true
@@ -12,7 +14,6 @@ size = 11
 
 [font.normal]
 family = "Monaco Nerd Font"
-# family = "Courier"
 style = "Regular"
 
 [font.bold]
@@ -34,58 +35,63 @@ y = 0
 [font.glyph_offset]
 x = 0
 y = 0
-# Colors (Baitong)
 
 [colors.primary]
-background = '#0a0c0e'
-foreground = '#00ff00'
+background = "#000000"
+foreground = "#DCDFE4"
 
 [colors.cursor]
-text = '#112a2a'
-cursor = '#00ff00'
+text = "#112a2a"
+cursor = "#00ff00"
 
 [colors.vi_mode_cursor]
-text = '#112a2a'
-cursor = '#00ff00'
+text = "#112a2a"
+cursor = "#00ff00"
 
-[colors.search]
-matches = { foreground = '#000000', background = '#1AE642' }
-focused_match = { foreground = '#000000', background = '#ff00ff' }
+[colors.search.matches]
+foreground = "#000000"
+background = "#1AE642"
 
-[colors.hints]
-start = { foreground = '#1d1f21', background = '#1AE642' }
-end = { foreground = '#1AE642', background = '#1d1f21' }
+[colors.search.focused_match]
+foreground = "#000000"
+background = "#ff00ff"
+
+[colors.hints.start]
+foreground = "#1d1f21"
+background = "#1AE642"
+
+[colors.hints.end]
+foreground = "#1AE642"
+background = "#1d1f21"
 
 [colors.line_indicator]
-foreground = '#00ff00'
-background = '#1d1f21'
+foreground = "#00ff00"
+background = "#1d1f21"
 
 [colors.footer_bar]
-background = '#731d8b'
-foreground = '#ffffff'
+background = "#731d8b"
+foreground = "#ffffff"
 
 [colors.selection]
-text = '#112a2a'
-background = '#1AE642'
+text = "#112a2a"
+background = "#1AE642"
 
-# Normal colors
 [colors.normal]
-black = '#000000'
-red = '#ff6b6b'
-green = '#00ff00'
-yellow = '#1AE642'
-blue = '#68FDFE'
-magenta = '#ff66ff'
-cyan = '#87CEFA'
-white = '#dbdbd9'
+black = "#282C34"
+red = "#E06C75"
+green = "#98C379"
+yellow = "#E5C07B"
+blue = "#61AFEF"
+magenta = "#C678DD"
+cyan = "#56B6C2"
+white = "#DCDFE4"
 
-# Bright colors
 [colors.bright]
-black = '#ffffff'
-red = '#ff6b6b'
-green = '#00ff00'
-yellow = '#1AE642'
-blue = '#68FDFE'
-magenta = '#ff66ff'
-cyan = '#68FDFE'
-white = '#dbdbd9'
+black = "#282C34"
+red = "#E06C75"
+green = "#98C379"
+yellow = "#E5C07B"
+blue = "#61AFEF"
+magenta = "#C678DD"
+cyan = "#56B6C2"
+white = "#DCDFE4"

@@ -1,6 +1,6 @@
 * {
     font-family: Monaco Nerd Font;
-    color: #00ff00;
+    color: #a7a7a7;
     outline: none;
     border: none;
 }
@@ -10,7 +10,7 @@
     margin: auto;
     padding: 10px;
     /* border-radius: 20px; */
-    border: 2px solid #00ff00;
+    border: 2px solid #a7a7a7;
 }
 
 #input {
@@ -18,7 +18,7 @@
     margin-bottom: 10px;
     border: 0px;
     border-radius: 0px;
-    background: #0a0c0e;
+    background: #000000;
 }
 
 #outer-box {
@@ -35,11 +35,11 @@
 }
 
 #entry:selected {
-    background-color: #00ff00;
+    background-color: #a7a7a7;
 }
 
 #text:selected {
-    color: #0a0c0e;
+    color: #000000;
 }
 
 #text {

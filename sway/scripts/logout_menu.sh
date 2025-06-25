@@ -6,7 +6,7 @@ action=$(echo "$choice" | sed 's/^[^ ]* //')
 
 case "$action" in
     "Lock")
-        swaylock -i /home/klim/Pictures/Wallpapers/noise_wp/dark_glitch_wallpaper.png -kl
+        swaylock -f -c 000000 -kl
         ;;
     "Logout")
         swaymsg exit
