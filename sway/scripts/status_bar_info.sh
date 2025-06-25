@@ -425,8 +425,8 @@ trap cleanup EXIT INT TERM
 while true; do
     # Get window title (truncate if too long)
     window_title=$(get_window_title)
-    if [ ${#window_title} -gt 80 ]; then
-        window_title="${window_title:0:80}..."
+    if [ ${#window_title} -gt 50 ]; then
+        window_title="${window_title:0:50}..."
     fi
 
     # Build status string

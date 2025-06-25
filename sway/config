@@ -336,7 +336,7 @@ seat seat0 hide_cursor 5000
 font pango:Monaco Nerd Font 8.5
 
 # hide edge borders
-hide_edge_borders none
+hide_edge_borders smart
 default_border pixel 1
 
 # colors
