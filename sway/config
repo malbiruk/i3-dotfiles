@@ -352,7 +352,7 @@ client.unfocused        $black		    $black 	       $white         	$white
 client.focused_inactive $black  	    $black 	       $white	    	$white
 client.urgent           $black    	    $black 	       $red             $white
 
-set $white #DCDFE4
+set $whitest #DCDFE4
 
 # swaybar configuration
 bar {
@@ -362,9 +362,9 @@ bar {
         colors {
                 background $black
                 separator  $black
-                statusline $grey
+                statusline $white
         #                          border             background         text
-                focused_workspace  $black	      $black 		 $white
+                focused_workspace  $black	      $black 		 $whitest
                 inactive_workspace $black             $black		 $grey
                 urgent_workspace   $black 	      $black             $red
         }
@@ -375,11 +375,10 @@ gaps inner 12
 # gaps outer 6
 smart_gaps on
 
-bindsym $mod+g gaps inner current plus 6
+bindsym $mod+g smart_gaps off, gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
-bindsym $mod+x gaps outer current plus 6
-bindsym $mod+shift+x gaps outer current minus 6
-bindsym $mod+control+g exec --no-startup-id swaymsg gaps inner current set 0 && swaymsg gaps outer current set 0
+bindsym $mod+x smart_gaps toggle
+bindsym $mod+control+g smart_gaps on, gaps inner current set 0, gaps outer current set 0
 
 # Mako
 bindsym $mod+n exec makoctl dismiss
