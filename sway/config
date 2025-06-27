@@ -39,7 +39,7 @@ output * bg /home/klim/Pictures/Wallpapers/cheng-feng-qdlLUboRwxs-unsplash.jpg f
 # Example configuration:
 #
 exec_always killall swayidle; swayidle -w \
-         timeout 1 '/home/klim/.config/sway/scripts/dim-brightness.sh dim' \
+         timeout 600 '/home/klim/.config/sway/scripts/dim-brightness.sh dim' \
          resume '/home/klim/.config/sway/scripts/dim-brightness.sh restore' \
          timeout 630 'swaylock -f -c 000000 -kl && swaymsg "output * power off"' \
          resume 'swaymsg "output * power on"' \
@@ -205,8 +205,7 @@ bindgesture swipe:4:left workspace next
 
 # floating things
 for_window [workspace=$10] floating enable
-bindsym $mod+u exec ~/.config/sway/scripts/floating-workspace.sh enable
-bindsym $mod+Shift+u exec ~/.config/sway/scripts/floating-workspace.sh disable
+bindsym $mod+u exec ~/.config/sway/scripts/floating-workspace.sh toggle
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
@@ -378,10 +377,10 @@ gaps inner 12
 # gaps outer 6
 smart_gaps on
 
-bindsym $mod+g smart_gaps off, gaps inner current plus 6
+bindsym $mod+g gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
 bindsym $mod+x smart_gaps toggle
-bindsym $mod+control+g smart_gaps on, gaps inner current set 0, gaps outer current set 0
+bindsym $mod+control+g gaps inner current set 0, gaps outer current set 0
 
 # Mako
 bindsym $mod+n exec makoctl dismiss

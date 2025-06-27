@@ -1,25 +1,39 @@
 #!/bin/bash
 
 CURRENT_WS=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused==true) | .name')
+STATE_FILE="/tmp/sway-floating-${CURRENT_WS//\//_}"
+
+enable() {
+    swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating enable"
+    swaymsg "[workspace=\"$CURRENT_WS\"] floating enable"
+    touch "$STATE_FILE"
+    notify-send "Floating enabled for workspace: $CURRENT_WS"
+}
+
+disable() {
+    swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating disable"
+    swaymsg "[workspace=\"$CURRENT_WS\"] floating disable"
+    swaymsg reload
+    rm -f "$STATE_FILE"
+    notify-send "Floating disabled for workspace: $CURRENT_WS"
+}
 
 case "$1" in
     "enable")
-        # Add a specific for_window rule for this workspace
-        swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating enable"
-        # Enable floating for current windows
-        swaymsg "[workspace=\"$CURRENT_WS\"] floating enable"
-        notify-send "Floating enabled for workspace: $CURRENT_WS"
+        enable
         ;;
     "disable")
-        # Try to counteract by adding a disable rule (this is hacky but might work)
-        swaymsg "for_window [workspace=\"$CURRENT_WS\"] floating disable"
-        # Disable floating for current windows
-        swaymsg "[workspace=\"$CURRENT_WS\"] floating disable"
-	swaymsg reload
-        notify-send "Floating disabled for workspace: $CURRENT_WS"
+        disable
+        ;;
+    "toggle")
+        if [ -f "$STATE_FILE" ]; then
+            disable
+        else
+            enable
+        fi
         ;;
     *)
-        echo "Usage: $0 {enable|disable}"
+        echo "Usage: $0 {enable|disable|toggle}"
         exit 1
         ;;
 esac

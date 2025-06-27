@@ -55,7 +55,7 @@
     "right_padding": 0.08
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "telemetry": {
     "diagnostics": true,
@@ -95,7 +95,7 @@
     "dark": "One Black"
   },
   "terminal": {
-    "dock": "bottom",
+    "dock": "right",
     "blinking": "on",
     "copy_on_select": true,
     "detect_venv": {
