@@ -337,7 +337,7 @@ seat seat0 hide_cursor 5000
 ###############
 
 # font
-font pango:Monaco Nerd Font 8.5
+font pango:Monaco Nerd Font 0.1
 
 # hide edge borders
 hide_edge_borders smart
