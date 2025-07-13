@@ -222,7 +222,7 @@ bindsym $mod+Ctrl+less move workspace to output left
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    bindsym $mod+s layout toggle stacking split
     bindsym $mod+e layout toggle tabbed split
 
     # Make the current focus fullscreen

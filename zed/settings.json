@@ -8,13 +8,33 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 
 {
+  "ssh_connections": [
+    {
+      "host": "kostiuki.duckdns.org",
+      "username": "family",
+      "port": 2222,
+      "projects": [
+        {
+          "paths": [
+            "/home/family/jellyfin"
+          ]
+        },
+        {
+          "paths": [
+            "/usr/local/bin/ollama"
+          ]
+        }
+      ]
+    }
+  ],
+  "show_edit_predictions": true,
+  "proxy": "socks5h://localhost:1080",
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "edit_predictions": {
-    "mode": "eager",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_text_threads": true
+    "mode": "subtle",
+    "enabled_in_text_threads": false
   },
   "auto_update": true,
   "agent": {
@@ -23,13 +43,12 @@
     "default_view": "text_thread",
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "gpt-4.1"
     },
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
     },
-    "version": "2",
     "dock": "right"
   },
   "restore_on_startup": "last_workspace",
@@ -53,9 +72,6 @@
   "centered_layout": {
     "left_padding": 0.08,
     "right_padding": 0.08
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
   },
   "telemetry": {
     "diagnostics": true,
@@ -81,7 +97,6 @@
   },
   "cursor_blink": true,
   "buffer_font_family": "Monaco",
-  // "ui_font_family": "Roboto",
   "ui_font_size": 14,
   "buffer_font_size": 13.5,
   "buffer_line_height": "comfortable",
@@ -156,8 +171,8 @@
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
-        "inlayHints": {
-          "maxLength": null
+        "check": {
+          "command": "clippy"
         }
       }
     },

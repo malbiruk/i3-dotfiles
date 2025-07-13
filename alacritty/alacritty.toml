@@ -44,7 +44,7 @@ cursor = "#DCDFE4"
 
 [colors.vi_mode_cursor]
 text = "#112a2a"
-cursor = "#00ff00"
+cursor = "#DCDFE4"
 
 [colors.search.matches]
 foreground = "#000000"

@@ -8,19 +8,35 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 
 {
+  "ssh_connections": [
+    {
+      "host": "kostiuki.duckdns.org",
+      "username": "family",
+      "port": 2222,
+      "projects": []
+    }
+  ],
+  "show_edit_predictions": true,
+  "proxy": "socks5h://localhost:1080",
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "edit_predictions": {
-    "mode": "eager",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_assistant": true
+    "mode": "subtle",
+    "enabled_in_text_threads": false
   },
   "auto_update": true,
-  "assistant": {
+  "agent": {
+    "default_profile": "ask",
+    "always_allow_tool_actions": true,
+    "default_view": "text_thread",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-3.7-sonnet"
+      "model": "gpt-4.1"
     },
     "version": "2",
     "dock": "right"
@@ -32,28 +48,34 @@
   "collaboration_panel": {
     "button": false
   },
+  "notification_panel": {
+    "button": false
+  },
+  "inline_code_actions": false,
   "tabs": {
     "git_status": true,
     "file_icons": true
   },
-  "show_user_picture": false,
+  "title_bar": {
+    "show_user_picture": false
+  },
   "centered_layout": {
     "left_padding": 0.08,
     "right_padding": 0.08
   },
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
   "telemetry": {
-    "diagnostics": false,
+    "diagnostics": true,
     "metrics": false
   },
   "inlay_hints": {
-    "enabled": true
+    "enabled": false,
+    "toggle_on_modifiers_press": {
+      "alt": true
+    }
   },
   "git": {
     "inline_blame": {
-      "enabled": true,
+      "enabled": false,
       "delay_ms": 1000,
       "min_column": 80
     }
@@ -75,7 +97,7 @@
   "theme": {
     "mode": "dark",
     "light": "Everforest Light Hard",
-    "dark": "Everforest Dark Hard"
+    "dark": "One Black"
   },
   "terminal": {
     "dock": "right",
@@ -106,10 +128,14 @@
   ],
   "remove_trailing_whitespace_on_save": true,
   "always_treat_brackets_as_autoclosed": true,
+  "file_types": {
+    "Swift": ["scd"]
+  },
   "languages": {
     "Python": {
       "language_servers": [
         "pyright", // language server, import checks
+        "!pylsp",
         "ruff" // linting and formatting
       ],
       "preferred_line_length": 100,
@@ -127,13 +153,44 @@
           }
         }
       ]
+    },
+    "Swift": {
+      "language_servers": ["!sourcekit-lsp"]
     }
   },
   "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        }
+      }
+    },
+    "pylsp": {
+      "settings": {
+        "plugins": {
+          "ruff": {
+            "enabled": false
+          },
+          "pyflakes": {
+            "enabled": false
+          },
+          "mypy": {
+            "enabled": false
+          },
+          "pycodestyle": {
+            "enabled": false
+          }
+        }
+      }
+    },
     "pyright": {
       "settings": {
         "pyright": {
           "disableLanguageServices": false
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
         },
         "python.analysis": {
           "diagnosticMode": "openFilesOnly",
