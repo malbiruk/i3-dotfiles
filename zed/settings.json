@@ -15,20 +15,16 @@
       "port": 2222,
       "projects": [
         {
-          "paths": [
-            "/home/family/jellyfin"
-          ]
+          "paths": ["/home/family/jellyfin"]
         },
         {
-          "paths": [
-            "/usr/local/bin/ollama"
-          ]
+          "paths": ["/usr/local/bin/ollama"]
         }
       ]
     }
   ],
-  "show_edit_predictions": true,
   "proxy": "socks5h://localhost:1080",
+  "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "zed"
   },
