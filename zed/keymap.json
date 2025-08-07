@@ -64,5 +64,11 @@
       "ctrl-enter": "assistant::Assist",
       "ctrl-n": "agent::NewTextThread"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-r": "project_symbols::Toggle"
+    }
   }
 ]

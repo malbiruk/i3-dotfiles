@@ -15,15 +15,40 @@
       "port": 2222,
       "projects": [
         {
-          "paths": ["/home/family/jellyfin"]
+          "paths": [
+            "/home/family/jellyfin"
+          ]
         },
         {
-          "paths": ["/usr/local/bin/ollama"]
+          "paths": [
+            "/usr/local/bin/ollama"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "homeserv.local",
+      "username": "ulya",
+      "projects": [
+        {
+          "paths": [
+            "/home/ulya/pi-hole"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "whitesnake",
+      "projects": [
+        {
+          "paths": [
+            "/home/klim/nextflow-test-pipeline"
+          ]
         }
       ]
     }
   ],
-  "proxy": "socks5h://localhost:1080",
+  // "proxy": "socks5h://localhost:1080",
   "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "zed"
@@ -43,7 +68,7 @@
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "model": "gpt-4o"
     },
     "dock": "right"
   },
@@ -141,7 +166,7 @@
     "Python": {
       "language_servers": [
         "pyright", // language server, import checks
-        "!pylsp",
+        // "!pylsp",
         "ruff" // linting and formatting
       ],
       "preferred_line_length": 100,
