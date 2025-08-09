@@ -121,7 +121,24 @@ get_disk_usage() {
 
 get_network() {
     if command -v nmcli >/dev/null 2>&1; then
-        # Get active WiFi connection - looking for 802-11-wireless type
+        # Check for any wired/ethernet connection first (includes USB tethering)
+        eth_info=$(nmcli -t -f NAME,TYPE,DEVICE connection show --active | grep -E ":(802-3-ethernet|ethernet):" | head -1)
+        
+        if [ -n "$eth_info" ]; then
+            # Extract device name from the connection info
+            eth_device=$(echo "$eth_info" | cut -d: -f3)
+            if [ -n "$eth_device" ]; then
+                # Check if it's USB tethering (usually starts with enx or usb)
+                if echo "$eth_device" | grep -qE "^(enx|usb)"; then
+                    echo "󰕟  USB (${eth_device:0:8}...)"  # nf-md-usb icon for USB tethering
+                else
+                    echo "󰈀  ${eth_device}"  # nf-md-ethernet icon for regular ethernet
+                fi
+                return
+            fi
+        fi
+        
+        # Check for WiFi connection
         wifi_name=$(nmcli -t -f NAME,TYPE connection show --active | grep ":802-11-wireless$" | cut -d: -f1)
 
         if [ -n "$wifi_name" ]; then
@@ -155,16 +172,12 @@ get_network() {
                 echo "󰤯  ${wifi_name}"  # nf-md-wifi_strength_outline
             fi
         else
-            # Check for ethernet connection
-            eth_name=$(nmcli -t -f NAME,TYPE connection show --active | grep ":ethernet$" | cut -d: -f1)
-            if [ -n "$eth_name" ]; then
-                echo "󰈀  ${eth_name}"  # nf-md-ethernet (if you have it)
+            # No active connection, check WiFi interface status
+            wifi_state=$(nmcli radio wifi 2>/dev/null)
+            if [ "$wifi_state" = "disabled" ]; then
+                echo "󰤮"  # nf-md-wifi_off - crossed out WiFi when interface is off
             else
-                # No network connection - send notification
-                # if check_notification_cooldown "battery_low"; then
-                #     send_notification "normal" "Network Disconnected" "No active network connection" "network-offline"
-                # fi
-                echo "󰤭"  # nf-md-wifi_strength_off
+                echo "󰤭"  # nf-md-wifi_strength_off - no signal icon when WiFi is on but not connected
             fi
         fi
     else

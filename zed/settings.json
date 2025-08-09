@@ -44,6 +44,11 @@
           "paths": [
             "/home/klim/nextflow-test-pipeline"
           ]
+        },
+        {
+          "paths": [
+            "/home/klim/nextflow-test-pipeline/PostGwasFlow"
+          ]
         }
       ]
     }
