@@ -353,9 +353,9 @@ set $whitest #DCDFE4
 
 # window colors
 #                       border          background     text             indicator
-client.focused          $white          $white         $black           $white
+client.focused          $black          $white         $black           $white
 client.unfocused        $black		    #222222 	       $white         	$white
-client.focused_inactive $white  	    $white 	       $white	    	$white
+client.focused_inactive $black  	    $white 	       $white	    	$white
 client.urgent           $black    	    $black 	       $red             $white
 
 
