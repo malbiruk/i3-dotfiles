@@ -349,15 +349,15 @@ set $black  #000000
 set $white #a7a7a7
 set $grey  #757575
 set $red    #E06C75
+set $whitest #DCDFE4
 
 # window colors
 #                       border          background     text             indicator
 client.focused          $white          $white         $black           $white
-client.unfocused        $black		    $black 	       $white         	$white
-client.focused_inactive $black  	    $black 	       $white	    	$white
+client.unfocused        $black		    #222222 	       $white         	$white
+client.focused_inactive $white  	    $white 	       $white	    	$white
 client.urgent           $black    	    $black 	       $red             $white
 
-set $whitest #DCDFE4
 
 # swaybar configuration
 bar {
