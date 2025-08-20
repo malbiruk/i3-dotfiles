@@ -45,6 +45,9 @@ exec_always killall swayidle; swayidle -w \
          resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000 -kl'
 
+# caffeine-mode
+bindsym $mod+c exec killall swayidle
+
 bindsym $mod+ctrl+q exec swaylock -f -c 000000 -kl
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off

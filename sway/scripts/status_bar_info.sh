@@ -123,7 +123,7 @@ get_network() {
     if command -v nmcli >/dev/null 2>&1; then
         # Check for any wired/ethernet connection first (includes USB tethering)
         eth_info=$(nmcli -t -f NAME,TYPE,DEVICE connection show --active | grep -E ":(802-3-ethernet|ethernet):" | head -1)
-        
+
         if [ -n "$eth_info" ]; then
             # Extract device name from the connection info
             eth_device=$(echo "$eth_info" | cut -d: -f3)
@@ -137,7 +137,7 @@ get_network() {
                 return
             fi
         fi
-        
+
         # Check for WiFi connection
         wifi_name=$(nmcli -t -f NAME,TYPE connection show --active | grep ":802-11-wireless$" | cut -d: -f1)
 
@@ -302,6 +302,15 @@ get_brightness() {
     fi
 }
 
+get_coffee() {
+    # Check if swayidle is running
+    if pgrep -x swayidle >/dev/null 2>&1; then
+        echo ""
+    else
+        echo " "
+    fi
+}
+
 get_battery() {
     local battery_capacity=""
     local battery_status=""
@@ -460,6 +469,10 @@ while true; do
     # Add brightness if available
     brightness=$(get_brightness)
     [ -n "$brightness" ] && status="${status}${brightness} | "
+
+    # Add coffee indicator
+    coffee=$(get_coffee)
+    [ -n "$coffee" ] && status="${status}${coffee} | "
 
     # Add battery if available
     battery=$(get_battery)

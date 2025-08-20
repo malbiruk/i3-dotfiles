@@ -70,5 +70,14 @@
     "bindings": {
       "ctrl-shift-r": "project_symbols::Toggle"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-s": [
+        "workspace::SendKeystrokes",
+        "ctrl-c ctrl-` ctrl-shift-v enter ctrl-` down alt-left"
+      ]
+    }
   }
 ]
