@@ -15,13 +15,19 @@
       "port": 2222,
       "projects": [
         {
-          "paths": ["/home/family/jellyfin"]
+          "paths": [
+            "/home/family/jellyfin"
+          ]
         },
         {
-          "paths": ["/home/family/media/artistpath"]
+          "paths": [
+            "/home/family/media/artistpath"
+          ]
         },
         {
-          "paths": ["/usr/local/bin/ollama"]
+          "paths": [
+            "/usr/local/bin/ollama"
+          ]
         }
       ]
     },
@@ -30,7 +36,9 @@
       "username": "ulya",
       "projects": [
         {
-          "paths": ["/home/ulya/pi-hole"]
+          "paths": [
+            "/home/ulya/pi-hole"
+          ]
         }
       ]
     },
@@ -38,10 +46,19 @@
       "host": "whitesnake",
       "projects": [
         {
-          "paths": ["/home/klim/nextflow-test-pipeline"]
+          "paths": [
+            "/home/klim/nextflow-test-pipeline"
+          ]
         },
         {
-          "paths": ["/home/klim/nextflow-test-pipeline/PostGwasFlow"]
+          "paths": [
+            "/home/klim/nextflow-test-pipeline/PostGwasFlow"
+          ]
+        },
+        {
+          "paths": [
+            "/home/klim/test-remote-notebook"
+          ]
         }
       ]
     }
@@ -66,7 +83,7 @@
     },
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-3-7-sonnet"
     },
     "dock": "right"
   },

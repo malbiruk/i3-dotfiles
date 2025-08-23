@@ -56,5 +56,16 @@
     "reveal_target": "dock",
     "allow_concurrent_runs": true,
     "hide": "never"
+  },
+  {
+    "label": "send to jupyter lab console",
+    "command": "send_to_jupyter.sh",
+    "env": {
+      "SELECTED_CODE": "$ZED_SELECTED_TEXT",
+      "ZED_TASK": "1"
+    },
+    "use_new_terminal": false,
+    "reveal": "never",
+    "allow_concurrent_runs": true
   }
 ]

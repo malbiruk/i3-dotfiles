@@ -23,7 +23,12 @@
         "workspace::SendKeystrokes",
         "enter # space % % space [ m a r k d o w n ] enter"
       ],
-      "alt-shift-enter": ["task::Spawn", { "task_name": "send to sardine" }],
+      "alt-s": [
+        "task::Spawn",
+        {
+          "task_name": "send to sardine"
+        }
+      ],
       "ctrl-shift-c": null
     }
   },
@@ -74,9 +79,20 @@
   {
     "context": "Workspace",
     "bindings": {
-      "alt-s": [
+      "alt-shift-enter": [
         "workspace::SendKeystrokes",
         "ctrl-c ctrl-` ctrl-shift-v enter ctrl-` down alt-left"
+      ]
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-j": [
+        "task::Spawn",
+        {
+          "task_name": "send to jupyter lab console"
+        }
       ]
     }
   }
