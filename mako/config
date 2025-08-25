@@ -1,12 +1,12 @@
 default-timeout=5000
 font=Cantarell 10
-background-color=#0a0c0eff
+background-color=#00000eff
 border-size=2
-border-color=#00ff00ff
-text-color=#00ff00ff
+border-color=#a7a7a7ff
+text-color=#DCDFE4ff
 anchor=bottom-right
 outer-margin=0,0,10
 
 [urgency=critical]
 default-timeout=0
-border-color=#ff6b6bff
+border-color=#E06C75ff
