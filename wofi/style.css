@@ -6,7 +6,7 @@
 }
 
 #window {
-    background: #ccc;
+    background: #fff;
     margin: auto;
     padding: 10px;
     border: 2px solid #fa5b1c;
@@ -17,7 +17,7 @@
     margin-bottom: 10px;
     border: 0px;
     border-radius: 0px;
-    background: #ccc;
+    background: #fff;
 }
 
 #outer-box {
