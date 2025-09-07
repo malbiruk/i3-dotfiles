@@ -15,19 +15,13 @@
       "port": 2222,
       "projects": [
         {
-          "paths": [
-            "/home/family/jellyfin"
-          ]
+          "paths": ["/home/family/jellyfin"]
         },
         {
-          "paths": [
-            "/home/family/media/artistpath"
-          ]
+          "paths": ["/home/family/media/artistpath"]
         },
         {
-          "paths": [
-            "/usr/local/bin/ollama"
-          ]
+          "paths": ["/usr/local/bin/ollama"]
         }
       ]
     },
@@ -36,9 +30,7 @@
       "username": "ulya",
       "projects": [
         {
-          "paths": [
-            "/home/ulya/pi-hole"
-          ]
+          "paths": ["/home/ulya/pi-hole"]
         }
       ]
     },
@@ -46,19 +38,13 @@
       "host": "whitesnake",
       "projects": [
         {
-          "paths": [
-            "/home/klim/nextflow-test-pipeline"
-          ]
+          "paths": ["/home/klim/nextflow-test-pipeline"]
         },
         {
-          "paths": [
-            "/home/klim/nextflow-test-pipeline/PostGwasFlow"
-          ]
+          "paths": ["/home/klim/nextflow-test-pipeline/PostGwasFlow"]
         },
         {
-          "paths": [
-            "/home/klim/test-remote-notebook"
-          ]
+          "paths": ["/home/klim/test-remote-notebook"]
         }
       ]
     }
@@ -73,6 +59,7 @@
     "enabled_in_text_threads": false
   },
   "auto_update": true,
+  "agent_font_size": 16,
   "agent": {
     "default_profile": "ask",
     "always_allow_tool_actions": true,
@@ -143,7 +130,7 @@
   "theme": {
     "mode": "dark",
     "light": "Everforest Light Hard",
-    "dark": "One Black"
+    "dark": "Base16 Monokai"
   },
   "terminal": {
     "dock": "right",
@@ -246,6 +233,7 @@
             "reportCallIssue": "none",
             "reportAttributeAccessIssue": "information",
             "reportMissingImports": "none",
+            "reportMissingModuleSource": "information",
             "reportInvalidTypeForm": "none",
             "reportUndefinedVariable": "none"
           }
@@ -271,7 +259,7 @@
               "T201", // flake8-print rules (print statements)
               // "S", // flake8-bandit security rules
               // "S101", // Use of assert detected
-              // "ANN", // flake8-annotations type annotation rules
+              "ANN", // flake8-annotations type annotation rules
               "ANN401",
               "D", // pydocstyle docstring rules
               "E501", // line too long

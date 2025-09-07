@@ -26,7 +26,7 @@ focus_on_window_activation focus
 ### Output configuration (wallpaper)
 #
 # exec_always bash -c "cd /home/klim/Pictures/Wallpapers/noise_wp/ && source .venv/bin/activate && python glitchy_wp.py"
-output * bg /home/klim/Pictures/Wallpapers/cheng-feng-qdlLUboRwxs-unsplash.jpg fill
+output * bg /home/klim/Pictures/Wallpapers/te_wallpaper.jpg fill
 #
 # Example configuration:
 #
@@ -347,21 +347,21 @@ font pango:Monaco Nerd Font 0.1
 
 # hide edge borders
 hide_edge_borders smart
-default_border pixel 1
+default_border pixel 3
 
 # colors
-set $black  #000000
-set $white #a7a7a7
-set $grey  #757575
-set $red    #E06C75
-set $whitest #DCDFE4
+set $orange #fa5b1c
+set $pink #ff106a
+set $gray #cccccc
+set $white #ffffff
+set $black #000000
 
 # window colors
 #                       border          background     text             indicator
-client.focused          $black          $white         $black           $white
-client.unfocused        $black		    #222222 	       $white         	$white
-client.focused_inactive $black  	    $white 	       $white	    	$white
-client.urgent           $black    	    $black 	       $red             $white
+client.focused          $orange          $orange         $gray           $orange
+client.unfocused        $gray		    $gray 	       $orange         	$orange
+client.focused_inactive $gray  	    $orange 	       $orange	    	$orange
+client.urgent           $gray    	    $gray 	       $pink             $orange
 
 
 # swaybar configuration
@@ -370,20 +370,20 @@ bar {
         status_command /home/klim/.config/sway/scripts/status_bar_info.sh
         font pango:Monaco Nerd Font 8.5
         colors {
-                background $black
-                separator  $black
-                statusline $white
+                background $gray
+                separator  $gray
+                statusline $black
         #                          border             background         text
-                focused_workspace  $black	      $black 		 $whitest
-                inactive_workspace $black             $black		 $grey
-                urgent_workspace   $black 	      $black             $red
+                focused_workspace  $orange	      $orange 		 $white
+                inactive_workspace $gray             $gray		 $black
+                urgent_workspace   $pink 	      $pink             $white
         }
 }
 
 # gaps
 gaps inner 12
 # gaps outer 6
-smart_gaps on
+smart_gaps off
 
 bindsym $mod+g gaps inner current plus 6
 bindsym $mod+shift+g gaps inner current minus 6
