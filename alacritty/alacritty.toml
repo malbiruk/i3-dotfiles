@@ -65,7 +65,7 @@ foreground = "#1AE642"
 background = "#1d1f21"
 
 [colors.line_indicator]
-foreground = "#00ff00"
+foreground = "#fa5b1c"
 background = "#1d1f21"
 
 [colors.footer_bar]
