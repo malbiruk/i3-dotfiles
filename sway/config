@@ -360,7 +360,7 @@ set $black #000000
 #                       border          background     text             indicator
 client.focused          $orange          $orange         $gray           $orange
 client.unfocused        $gray		    $gray 	       $orange         	$orange
-client.focused_inactive $gray  	    $orange 	       $orange	    	$orange
+client.focused_inactive $gray  	    $gray 	       $gray	    	$orange
 client.urgent           $gray    	    $gray 	       $pink             $orange
 
 
