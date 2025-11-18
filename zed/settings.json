@@ -8,48 +8,55 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 
 {
+  "use_system_window_tabs": false,
+  "language_models": {
+    "openai_compatible": {
+      "Modal": {
+        "api_url": "https://ansficp--qwen-coder-vllm-serve.modal.run/v1",
+        "available_models": [
+          {
+            "name": "qwen3-14b-awq",
+            "display_name": null,
+            "max_tokens": 32768,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 8192,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          }
+        ]
+      }
+    }
+  },
   "ssh_connections": [
     {
       "host": "kostiuki.duckdns.org",
       "username": "family",
-      "port": 2222,
-      "projects": [
-        {
-          "paths": ["/home/family/jellyfin"]
-        },
-        {
-          "paths": ["/home/family/media/artistpath"]
-        },
-        {
-          "paths": ["/usr/local/bin/ollama"]
-        }
-      ]
-    },
-    {
-      "host": "homeserv.local",
-      "username": "ulya",
-      "projects": [
-        {
-          "paths": ["/home/ulya/pi-hole"]
-        }
-      ]
+      "port": 2222
     },
     {
       "host": "whitesnake",
       "projects": [
         {
-          "paths": ["/home/klim/nextflow-test-pipeline"]
+          "paths": ["/home/klim/PostGwasFlow"]
         },
         {
-          "paths": ["/home/klim/nextflow-test-pipeline/PostGwasFlow"]
-        },
+          "paths": ["/home/klim/TargetIdentification"]
+        }
+      ],
+      "port_forwards": [
         {
-          "paths": ["/home/klim/test-remote-notebook"]
+          "local_port": 8899,
+          "remote_port": 8899
         }
       ]
     }
   ],
   // "proxy": "socks5h://localhost:1080",
+  "bottom_dock_layout": "left_aligned",
   "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "zed"
@@ -59,18 +66,20 @@
     "enabled_in_text_threads": false
   },
   "auto_update": true,
-  "agent_font_size": 16,
+  "agent_ui_font_size": 16,
   "agent": {
-    "default_profile": "ask",
-    "always_allow_tool_actions": true,
+    "single_file_review": false,
+    "use_modifier_to_send": true,
+    "default_profile": "write",
+    "always_allow_tool_actions": false,
     "default_view": "text_thread",
     "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "provider": "google",
+      "model": "gemini-2.5-flash"
     },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet"
+      "provider": "google",
+      "model": "gemini-2.5-flash"
     },
     "dock": "right"
   },
@@ -114,7 +123,7 @@
     }
   },
   "vim_mode": false,
-  "relative_line_numbers": false,
+  "relative_line_numbers": "disabled",
   "vim": {
     "toggle_relative_line_numbers": true
   },
@@ -127,25 +136,12 @@
   "wrap_guides": [100],
   "show_wrap_guides": true,
   "base_keymap": "Atom",
-  "theme": {
-    "mode": "dark",
-    "light": "Everforest Light Hard",
-    "dark": "Base16 Monokai"
-  },
+  "theme": "PaperColor Light",
   "terminal": {
-    "dock": "right",
+    "dock": "bottom",
     "blinking": "on",
     "copy_on_select": true,
-    "detect_venv": {
-      "on": {
-        "directories": [".env", "env", ".venv", "venv"],
-        "activate_script": "default"
-      }
-    }
-  },
-  "auto_install_extensions": {
-    "ruff": true,
-    "toml": true
+    "detect_venv": "off"
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -167,6 +163,7 @@
   "languages": {
     "Python": {
       "language_servers": [
+        "!basedpyright",
         "pyright", // language server, import checks
         "!pylsp",
         "ruff" // linting and formatting
@@ -174,12 +171,7 @@
       "preferred_line_length": 100,
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": false
-          }
-        },
+        { "code_action": "source.organizeImports.ruff" },
         {
           "language_server": {
             "name": "ruff"
@@ -233,6 +225,7 @@
             "reportCallIssue": "none",
             "reportAttributeAccessIssue": "information",
             "reportMissingImports": "none",
+            "reportUnknownArgumentType": "none",
             "reportMissingModuleSource": "information",
             "reportInvalidTypeForm": "none",
             "reportUndefinedVariable": "none"
@@ -253,18 +246,22 @@
             "ignore": [
               // "PT", // pytest-related rules
               "DTZ007", // Naive datetime.strptime -- without tz
-              // "ERA", // eradicate commented-out code detection
-              // "PD101", // Using series.nunique() for checking that a series is constant is inefficient
+              "ERA", // eradicate commented-out code detection
+              "RUF001", // confusing characters
+              "PD101", // Using series.nunique() for checking that a series is constant is inefficient
               // "TD", // todo comments detection
               "T201", // flake8-print rules (print statements)
               // "S", // flake8-bandit security rules
               // "S101", // Use of assert detected
+              "S301", // use of pickle
+              "S311", // cryptographic pseudo-randomness warning
+              "S603", // Check for method calls that initiate a subprocess without a shell
+              "S607", // partial path in subprocess
               "ANN", // flake8-annotations type annotation rules
-              "ANN401",
               "D", // pydocstyle docstring rules
               "E501", // line too long
-              // "INP", // flake8-no-pep420 rules (implicit namespace packages)
-              // "PLR2004", // Magic value used in comparison
+              "INP", // flake8-no-pep420 rules (implicit namespace packages)
+              "PLR2004", // Magic value used in comparison
               "B905", // `zip()` without an explicit `strict=` parameter
               "PLR0913", // Too many arguments to function call
               "C408", // Unnecessary `dict` call (rewrite as a literal)
@@ -274,7 +271,8 @@
               "PD901", // Avoid using the generic variable name df for DataFrames
               "NPY002", // Replace legacy np.random.{method_name} call with np.random.Generator
               "TRY003", // Avoid specifying long messages outside the exception class
-              // "TRY400", // Use logger.exception instead of logger.error
+              "TRY400", // Use logger.exception instead of logger.error
+              "G004", // f-strings in logs
               // "FLY002", // Consider {expression} instead of string join
               // "PLE1142", // await should be used within an async function
               "EXE001", // Shebang is present but file is not executable
