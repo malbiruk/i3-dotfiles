@@ -95,5 +95,23 @@
         }
       ]
     }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-t": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-t": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-s": "workspace::Save"
+    }
   }
 ]

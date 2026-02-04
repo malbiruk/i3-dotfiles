@@ -24,46 +24,46 @@
               "tools": true,
               "images": false,
               "parallel_tool_calls": false,
-              "prompt_cache_key": false
-            }
-          }
-        ]
-      }
-    }
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
   },
   "ssh_connections": [
     {
       "host": "kostiuki.duckdns.org",
       "username": "family",
-      "port": 2222
+      "port": 2222,
+      "args": [],
+      "projects": [],
     },
     {
       "host": "whitesnake",
+      "args": [],
       "projects": [
         {
-          "paths": ["/home/klim/PostGwasFlow"]
+          "paths": ["/home/klim/tatd"],
         },
-        {
-          "paths": ["/home/klim/TargetIdentification"]
-        }
       ],
       "port_forwards": [
         {
           "local_port": 8899,
-          "remote_port": 8899
-        }
-      ]
-    }
+          "remote_port": 8899,
+        },
+      ],
+    },
   ],
   // "proxy": "socks5h://localhost:1080",
   "bottom_dock_layout": "left_aligned",
   "show_edit_predictions": true,
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "zed",
   },
   "edit_predictions": {
     "mode": "subtle",
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": false,
   },
   "auto_update": true,
   "agent_ui_font_size": 16,
@@ -75,57 +75,57 @@
     "default_view": "text_thread",
     "inline_assistant_model": {
       "provider": "google",
-      "model": "gemini-2.5-flash"
+      "model": "gemini-2.5-flash",
     },
     "default_model": {
       "provider": "google",
-      "model": "gemini-2.5-flash"
+      "model": "gemini-2.5-pro",
     },
-    "dock": "right"
+    "dock": "right",
   },
   "restore_on_startup": "last_workspace",
   "project_panel": {
-    "auto_fold_dirs": true
+    "auto_fold_dirs": true,
   },
   "collaboration_panel": {
-    "button": false
+    "button": false,
   },
   "notification_panel": {
-    "button": false
+    "button": false,
   },
   "inline_code_actions": false,
   "tabs": {
     "git_status": true,
-    "file_icons": true
+    "file_icons": true,
   },
   "title_bar": {
-    "show_user_picture": false
+    "show_user_picture": false,
   },
   "centered_layout": {
     "left_padding": 0.08,
-    "right_padding": 0.08
+    "right_padding": 0.08,
   },
   "telemetry": {
     "diagnostics": true,
-    "metrics": false
+    "metrics": false,
   },
   "inlay_hints": {
     "enabled": false,
     "toggle_on_modifiers_press": {
-      "alt": true
-    }
+      "alt": true,
+    },
   },
   "git": {
     "inline_blame": {
       "enabled": false,
       "delay_ms": 1000,
-      "min_column": 80
-    }
+      "min_column": 80,
+    },
   },
   "vim_mode": false,
   "relative_line_numbers": "disabled",
   "vim": {
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "cursor_blink": true,
   "buffer_font_family": "Monaco",
@@ -136,12 +136,12 @@
   "wrap_guides": [100],
   "show_wrap_guides": true,
   "base_keymap": "Atom",
-  "theme": "PaperColor Light",
+  "theme": "Everforest Dark Hard",
   "terminal": {
-    "dock": "bottom",
+    "dock": "right",
     "blinking": "on",
     "copy_on_select": true,
-    "detect_venv": "off"
+    "detect_venv": "off",
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -153,12 +153,12 @@
     "**/.classpath",
     "**/.settings",
     "**/dist",
-    "**/.vscode"
+    "**/.vscode",
   ],
   "remove_trailing_whitespace_on_save": true,
   "always_treat_brackets_as_autoclosed": true,
   "file_types": {
-    "Swift": ["scd"]
+    "Swift": ["scd"],
   },
   "languages": {
     "Python": {
@@ -166,7 +166,7 @@
         "!basedpyright",
         "pyright", // language server, import checks
         "!pylsp",
-        "ruff" // linting and formatting
+        "ruff", // linting and formatting
       ],
       "preferred_line_length": 100,
       "format_on_save": "on",
@@ -174,48 +174,48 @@
         { "code_action": "source.organizeImports.ruff" },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
+            "name": "ruff",
+          },
+        },
+      ],
     },
     "Swift": {
-      "language_servers": ["!sourcekit-lsp"]
-    }
+      "language_servers": ["!sourcekit-lsp"],
+    },
   },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
         "check": {
-          "command": "clippy"
-        }
-      }
+          "command": "clippy",
+        },
+      },
     },
     "pylsp": {
       "settings": {
         "plugins": {
           "ruff": {
-            "enabled": false
+            "enabled": false,
           },
           "pyflakes": {
-            "enabled": false
+            "enabled": false,
           },
           "mypy": {
-            "enabled": false
+            "enabled": false,
           },
           "pycodestyle": {
-            "enabled": false
-          }
-        }
-      }
+            "enabled": false,
+          },
+        },
+      },
     },
     "pyright": {
       "settings": {
         "pyright": {
-          "disableLanguageServices": false
+          "disableLanguageServices": false,
         },
         "python": {
-          "pythonPath": ".venv/bin/python"
+          "pythonPath": ".venv/bin/python",
         },
         "python.analysis": {
           "diagnosticMode": "openFilesOnly",
@@ -228,10 +228,10 @@
             "reportUnknownArgumentType": "none",
             "reportMissingModuleSource": "information",
             "reportInvalidTypeForm": "none",
-            "reportUndefinedVariable": "none"
-          }
-        }
-      }
+            "reportUndefinedVariable": "none",
+          },
+        },
+      },
     },
     "ruff": {
       "initialization_options": {
@@ -239,8 +239,9 @@
           "exclude": ["**/tests/**"],
           "path": "./pyproject.toml",
           "lineLength": 100,
-          "targetVersion": "py312",
+          "targetVersion": "py311",
           "lint": {
+            // "select": ["E", "F", "I"],
             "select": ["ALL"],
             "fixable": ["ALL"],
             "ignore": [
@@ -257,6 +258,7 @@
               "S311", // cryptographic pseudo-randomness warning
               "S603", // Check for method calls that initiate a subprocess without a shell
               "S607", // partial path in subprocess
+              "S608", // Possible SQL injection vector through string-based query construction
               "ANN", // flake8-annotations type annotation rules
               "D", // pydocstyle docstring rules
               "E501", // line too long
@@ -280,53 +282,11 @@
               "EM102", // Exception must not use an f-string literal, assign to variable first
               "NPY201", // np.{existing} will be removed in NumPy 2.0. {migration_guide}
               "BLE001", // Do not catch blind exception: `Exception`
-              "FA102" // from __future__ import annotations
+              "FA102", // from __future__ import annotations
             ],
-            "severities": {
-              "PLE": "E", // pylint error rules
-              "I002": "E", // Missing required import for __all__ item
-              "F821": "E", // Undefined name
-              "F401": "I", // Unused import
-              "F841": "I", // Unused variable
-              "F541": "I", // f-string without any formatted values
-              "TID": "I", // flake8-tidy-imports rules
-              "PT": "I", // pytest-related rules
-              "PGH": "I", // pygrep-hooks rules
-              "PLW": "I", // pylint warning rules
-              "F": "I", // pyflakes rules
-              "RET": "I", // flake8-return rules
-              "E": "I", // pycodestyle error rules
-              "FAST": "I", // FastAPI-related rules
-              "PERF": "I", // performance-related rules
-              "NPY": "I", // NumPy-specific rules
-              "PLR": "I", // pylint refactor rules
-              "ARG": "I", // flake8-unused-arguments rules
-              "ASYNC": "I", // flake8-async rules
-              "TRY": "I", // tryceratops rules
-              "PLC": "I", // pylint convention rules
-              "PD": "I", // pandas-related rules
-              "FIX": "I", // fixme comments detection
-              "PTH": "I", // flake8-use-pathlib rules
-              "SIM": "I", // flake8-simplify rules
-              "RSE": "I", // flake8-raise rules
-              "Q": "I", // flake8-quotes rules
-              "PIE": "I", // flake8-pie rules
-              "ICN": "I", // flake8-import-conventions rules
-              "EXE": "I", // flake8-executable rules
-              "C4": "I", // flake8-comprehensions rules
-              "B": "I", // flake8-bugbear rules
-              "UP": "I", // pyupgrade rules
-              "N": "I", // pep8-naming rules
-              "COM": "I", // flake8-commas rules
-              "RUF": "I", // Ruff-specific rules
-              "W": "I", // pycodestyle warning rules
-              "C": "I", // flake8-comprehensions and mccabe rules
-              "FLY": "I", // flynt rules
-              "PYI": "I" // flake8-pyi rules for .pyi files
-            }
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 }
